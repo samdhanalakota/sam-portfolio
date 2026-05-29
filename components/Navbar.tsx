@@ -1,0 +1,208 @@
+"use client";
+
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const NAV_ITEMS = [
+  { label: "INTRO", id: "intro" },
+  { label: "ABOUT", id: "about" },
+  { label: "PROJECTS", id: "projects" },
+  { label: "SKILLS", id: "skills" },
+  { label: "JOURNEY", id: "journey" },
+  { label: "CONTACT", id: "contact" },
+] as const;
+
+export default function Navbar() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("intro");
+
+  const scrollToSection = (id: string) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry) {
+          setActiveSection(visibleEntry.target.id);
+        }
+      },
+      {
+        threshold: [0.25, 0.5, 0.75],
+        rootMargin: "-35% 0px -45% 0px",
+      }
+    );
+
+    NAV_ITEMS.forEach(({ id }) => {
+      const section = document.getElementById(id);
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <>
+      <header
+        className={`fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 ${
+          isScrolled
+            ? "border-[var(--border)] bg-[var(--bg-primary)]/80 backdrop-blur-md"
+            : "border-transparent bg-transparent"
+        }`}
+      >
+        <nav className="relative flex h-20 w-full items-center justify-between px-6 md:pl-10 md:pr-10">
+          <button
+            type="button"
+            onClick={() => scrollToSection("intro")}
+            className="flex items-center"
+            aria-label="Scroll to intro"
+          >
+            <Image
+              src={!mounted || theme === "dark" ? "/logo-dark.png" : "/logo-light.png"}
+              alt="Sam Dhanalakota"
+              width={70}
+              height={70}
+              priority
+            />
+          </button>
+
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => scrollToSection(item.id)}
+                  className={`[font-family:var(--font-display)] text-[13px] font-bold uppercase tracking-widest transition-colors duration-200 ${
+                    isActive
+                      ? "text-[var(--text-primary)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="hidden items-center pr-8 md:flex">
+            <button
+              type="button"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--border)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--text-primary)]"
+              style={{ marginRight: "1rem" }}
+              aria-label="Toggle theme"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {mounted && theme === "dark" ? (
+                  <motion.span
+                    key="sun"
+                    initial={{ opacity: 0, rotate: -90, scale: 0.75 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 90, scale: 0.75 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex"
+                  >
+                  <Sun size={18} />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="moon"
+                    initial={{ opacity: 0, rotate: 90, scale: 0.75 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: -90, scale: 0.75 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex"
+                  >
+                  <Moon size={18} />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--border)] text-[var(--text-primary)] md:hidden"
+            aria-label="Open mobile menu"
+          >
+            <Menu size={18} />
+          </button>
+        </nav>
+      </header>
+
+      <AnimatePresence>
+        {isMobileMenuOpen ? (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg-primary)] md:hidden"
+          >
+            <div className="flex h-20 items-center justify-end px-6">
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--border)] text-[var(--text-primary)]"
+                aria-label="Close mobile menu"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="flex flex-1 flex-col items-center justify-center gap-7 px-6">
+              {NAV_ITEMS.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => scrollToSection(item.id)}
+                  className="[font-family:var(--font-display)] text-[var(--text-secondary)] text-[18px] font-semibold uppercase tracking-wide transition-colors duration-200 hover:text-[var(--text-primary)]"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
+  );
+}

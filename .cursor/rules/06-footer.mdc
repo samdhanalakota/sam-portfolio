@@ -1,0 +1,58 @@
+---
+description: Footer component rules
+globs: components/Footer.tsx
+alwaysApply: true
+---
+# Footer
+
+## Layout
+Three column grid on desktop, single column stacked on mobile.
+Bottom bar below a divider line.
+
+## Column 1 — Brand
+- SD logo (same pattern as Navbar — dark/light switching)
+- Logo size: 48x48px
+- Short tagline below logo:
+  "Building enterprise platforms that scale."
+- Tagline: Inter 14px, var(--text-muted)
+
+## Column 2 — Quick Links
+- Heading: "Quick Links" — Space Grotesk 13px bold uppercase tracking-widest
+- Links: INTRO, ABOUT, PROJECTS, SKILLS, JOURNEY, CONTACT
+- Each scrolls to its section id on click
+- Same scrollToSection pattern as Navbar
+- Style: Inter 14px, var(--text-secondary), hover var(--text-primary)
+- Mark each with // TODO: wire up when section is built
+
+## Column 3 — Contact
+- Heading: "Contact" — same heading style as Quick Links
+- Items:
+  - Email icon + "samdsiva1994@gmail.com" — mailto link
+  - LinkedIn icon + "LinkedIn" — placeholder href="#"
+  - GitHub icon + "GitHub" — placeholder href="#"
+  - MessageSquare icon + "Leave a Message" — placeholder, scrolls to #contact
+- Icons from lucide-react: Mail, Linkedin, Github, MessageSquare
+- Style: Inter 14px, var(--text-secondary), hover var(--text-primary)
+- flex items-center gap-2 per item
+
+## Divider
+- 1px border-t border-[var(--border)] above bottom bar
+
+## Bottom Bar
+- Left: "© 2026 Sam Dhanalakota. All rights reserved."
+  Inter 13px var(--text-muted)
+- Right: "Back to top ↑" button
+  Scrolls to #intro on click
+  Inter 13px var(--text-muted) hover var(--text-primary)
+- justify-between items-center
+
+## Outer Container
+- bg-[var(--bg-secondary)]
+- border-t border-[var(--border)]
+- px-6 md:px-10 py-16
+
+## Rules
+- "use client" required (scrollToSection, mounted state)
+- Logo switches dark/light same as Navbar using mounted + theme
+- No hardcoded colors
+- All placeholders marked with comments

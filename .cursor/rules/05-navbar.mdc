@@ -1,0 +1,85 @@
+---
+alwaysApply: true
+description: Navbar component rules
+globs: components/Navbar.tsx
+---
+
+# Navbar
+
+## Source of Truth
+agent-os/product/tech-stack.md defines stack decisions.
+
+## Structure
+Fixed at top, full width, z-index 50.
+Three sections: Logo left, Links center, Actions right.
+
+## Logo
+- Image from public/logo.png using next/image
+- Size: 40x40px
+- On click: smooth scroll to #intro
+- Dark mode: as-is
+- Light mode: CSS filter invert(1)
+
+## Nav Links
+INTRO · ABOUT · PROJECTS · SKILLS · JOURNEY · CONTACT
+- Each scrolls to its section id on click
+- Use onClick with scrollIntoView behavior smooth
+- Section ids: #intro #about #projects #skills #journey #contact
+- Font: var(--font-display)
+- Weight: 600
+- Size: 14px
+- Uppercase, letter-spacing wide
+- Color: var(--text-secondary)
+- Hover: var(--text-primary)
+- Active section: var(--text-primary) — track with IntersectionObserver
+
+## CONTACT ME Button
+- Right side of navbar
+- Pill shape: rounded-full
+- Border: 1.5px solid var(--text-primary)
+- Background: transparent
+- Hover: bg-[var(--text-primary)] text-[var(--bg-primary)]
+- Font: var(--font-display) weight 600 size 13px uppercase
+- Padding: px-5 py-2
+- On click: smooth scroll to #contact
+- Transition: all 200ms ease
+
+## Theme Toggle
+- Sun icon in dark mode (click switches to light)
+- Moon icon in light mode (click switches to dark)
+- Use useTheme from next-themes
+- AnimatePresence for icon swap animation
+- 36px circle button
+- Border: 1.5px solid var(--border)
+- Hover: border-[var(--text-primary)]
+
+## Scroll Behavior
+- Default: fully transparent background, no border
+- After scrolling past 80px:
+  bg-[var(--bg-primary)]/80 backdrop-blur-md
+  border-bottom: 1px solid var(--border)
+- Transition: smooth 300ms
+- Track with useEffect + window scroll listener
+
+## Mobile (below md breakpoint)
+- Hide nav links and actions
+- Show hamburger icon (Menu from lucide-react)
+- On click: full screen overlay
+  - bg-[var(--bg-primary)]
+  - All 6 links stacked vertically centered
+  - CONTACT ME button below links
+  - X icon to close (X from lucide-react)
+  - Animate with framer-motion: opacity 0→1, y -20→0
+- Close on link click
+
+## Active Section Tracking
+- Use IntersectionObserver on all 6 section ids
+- Highlight current section link with var(--text-primary)
+- Update as user scrolls
+
+## Rules
+- "use client" required
+- No hardcoded colors — CSS variables only
+- next/image for logo
+- lucide-react for icons only
+- All scroll actions use scrollIntoView smooth

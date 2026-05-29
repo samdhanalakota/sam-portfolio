@@ -1,0 +1,51 @@
+---
+description: Global styles, CSS variables, dark/light theme tokens
+globs: app/globals.css
+alwaysApply: true
+---
+
+# Global Styles
+
+## Source of Truth
+agent-os/product/tech-stack.md defines all stack decisions.
+agent-os/standards/global.md defines cross-cutting rules.
+Never contradict these files.
+
+## Rules
+- All colors must use CSS variables — never hardcode hex in components
+- Both :root (light) and .dark tokens must always be defined
+- No inline styles anywhere in the project
+- Tailwind classes reference CSS variables like: bg-[var(--bg-primary)]
+
+## Font Variables
+--font-display: Space Grotesk
+--font-body: Inter
+Apply both to html element via next/font
+
+## CSS Variable Tokens
+
+### Light Mode (:root)
+--bg-primary: #ffffff
+--bg-secondary: #f5f5f5
+--bg-card: #efefef
+--text-primary: #0a0a0a
+--text-secondary: #444444
+--text-muted: #888888
+--border: #e0e0e0
+--accent: #0a0a0a
+
+### Dark Mode (.dark)
+--bg-primary: #0a0a0a
+--bg-secondary: #111111
+--bg-card: #1a1a1a
+--text-primary: #f5f5f5
+--text-secondary: #a3a3a3
+--text-muted: #555555
+--border: #222222
+--accent: #f5f5f5
+
+## Base Rules
+- html: scroll-behavior smooth
+- body: antialiased, bg-[var(--bg-primary)], text-[var(--text-primary)]
+- Custom scrollbar: 6px, matches theme
+- ::selection: inverted colors

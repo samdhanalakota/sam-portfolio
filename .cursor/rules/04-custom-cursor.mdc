@@ -1,0 +1,60 @@
+---
+alwaysApply: true
+description: Custom cursor component with move, hover and click effects
+globs: components/CustomCursor.tsx
+---
+
+# Custom Cursor
+
+## What It Is
+A custom cursor that replaces the default browser cursor.
+Two layered circles that follow the mouse.
+
+## Two Elements
+1. **Dot** — small 8px circle, follows mouse instantly
+2. **Ring** — larger 32px circle, follows with spring lag
+
+## Behavior
+
+### Move
+- Dot: follows cursor position instantly
+- Ring: follows with spring physics — stiffness 150, damping 15
+- Both use framer-motion useMotionValue + useSpring
+
+### Hover (on any button, link, or [data-cursor="pointer"])
+- Ring: scales up to 1.5x
+- Ring: background fills with white at 10% opacity
+- Dot: scales down to 0.5x
+- Smooth transition
+
+### Click
+- Both elements: quick scale down to 0.8x then back
+- Duration: 0.1s
+
+## Style
+
+### Dot
+- 8px x 8px
+- border-radius 50%
+- background: var(--text-primary)
+- position fixed
+- pointer-events none
+- z-index 9998
+- transform: translate(-50%, -50%)
+
+### Ring
+- 32px x 32px
+- border-radius 50%
+- border: 1.5px solid var(--text-primary)
+- background: transparent
+- position fixed
+- pointer-events none
+- z-index 9998
+- transform: translate(-50%, -50%)
+
+## Rules
+- "use client" required
+- Hide default cursor on body: cursor none
+- Only render on desktop — hide on touch devices
+- Add to layout.tsx inside ThemeProvider alongside ScrollProgressBar
+- pointer-events: none on both elements so they never block clicks

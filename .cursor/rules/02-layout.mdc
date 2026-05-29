@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+description: Root layout rules - fonts, theme provider, metadata
+globs: app/layout.tsx
+---
+
+# Layout Rules
+
+## Source of Truth
+agent-os/product/tech-stack.md defines all stack decisions.
+
+## Fonts
+Use next/font/google
+- Space Grotesk: weights 400, 500, 600, 700 — variable: --font-display
+- Inter: weights 400, 500 — variable: --font-body
+Apply both variables to <html> element as className
+
+## Theme
+- Use ThemeProvider from next-themes
+- attribute="class"
+- defaultTheme="dark"
+- enableSystem=false
+- Wrap entire app
+
+## Body Classes
+- font-body (maps to Inter via Tailwind)
+- antialiased
+- bg-[var(--bg-primary)]
+- text-[var(--text-primary)]
+- transition-colors duration-300
+
+## Metadata
+- title: "Sam Dhanalakota — Senior Full-Stack Engineer"
+- description: "Senior Full-Stack Engineer building enterprise 
+  platforms at scale. React, TypeScript, Node.js, AWS. 
+  Based in Vancouver, BC."
+
+## Rules
+- No hardcoded colors
+- ThemeProvider must be outermost wrapper inside <body>
+- fonts applied to <html> not <body>
