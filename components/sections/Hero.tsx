@@ -34,7 +34,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="[font-family:var(--font-display)] mb-6 text-sm font-medium uppercase tracking-widest text-[var(--text-muted)]"
+            className="[font-family:var(--font-display)] mb-6 text-md font-medium uppercase tracking-widest text-[var(--text-muted)]"
           >
             {t("label")}
           </motion.p>
@@ -43,7 +43,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-6 font-serif font-bold leading-tight text-[#F5F5F5]"
+            className="mb-6 font-serif font-bold leading-tight text-[var(--hero-heading)]"
             style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
           >
             {t("headline_1")}
@@ -66,18 +66,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-row items-center gap-4 mt-8"
+            className="flex flex-row items-center gap-4"
+            style={{ marginTop: "2rem" }}
           >
             <Button
               onClick={() => scrollToSection("projects")}
-              className="bg-[#CCFF00] text-black hover:opacity-90 rounded-full !px-8 !py-4 text-sm font-bold uppercase tracking-widest border-0"
+              className="bg-[var(--lime)] border border-[var(--lime)] text-[var(--btn-primary-text)] hover:bg-[var(--lime-hover)] rounded-full !px-8 !py-4 text-sm font-bold uppercase tracking-widest"
             >
               {t("cta_primary")}
             </Button>
             <Button
               onClick={() => scrollToSection("contact")}
               variant="outline"
-              className="rounded-full !px-8 !py-4 text-sm font-bold uppercase tracking-widest border-[1.5px] border-white text-white bg-transparent hover:bg-white hover:text-black transition-all duration-200"
+              className="rounded-full !px-8 !py-4 text-sm font-bold uppercase tracking-widest border-[1.5px] border-[var(--btn-outline-border)] text-[var(--btn-outline-text)] bg-transparent hover:bg-[var(--btn-outline-hover-bg)] hover:border-[var(--btn-outline-hover-border)] transition-all duration-200"
             >
               {t("cta_secondary")}
             </Button>
@@ -89,7 +90,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
           className="hidden lg:flex self-center h-[520px] w-[420px] flex-shrink-0 overflow-hidden rounded-2xl border border-[var(--custom-border)]"
-          // style={{ paddingRight: "4rem" }}
+          style={{ marginRight: "4rem" }}
         >
           <div className="relative h-full w-full">
             <Image

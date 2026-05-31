@@ -20,10 +20,15 @@ import { scrollToSection } from "@/lib/utils/scroll";
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation("navbar");
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("intro");
-  const isDark = theme !== "light";
+  const isDark = mounted ? theme !== "light" : true;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,10 +104,9 @@ export default function Navbar() {
                   key={item.id}
                   type="button"
                   onClick={() => onNavClick(item.id)}
-                  style={{ color: isActive ? "#CCFF00" : undefined }}
                   className={`[font-family:var(--font-display)] text-[13px] font-bold uppercase tracking-widest transition-colors duration-200 ${
                     isActive
-                      ? ""
+                      ? "text-[var(--nav-active)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
@@ -116,11 +120,12 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              disabled={!mounted}
               className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--text-primary)]"
               aria-label={t("toggle_theme")}
             >
               <AnimatePresence mode="wait" initial={false}>
-                {isDark ? (
+                {isDark || !mounted ? (
                   <motion.span
                     key="sun"
                     initial={{ opacity: 0, rotate: -90, scale: 0.75 }}

@@ -22,10 +22,7 @@ export default function ScrollProgressBar() {
       style={{
         scaleX,
         transformOrigin: "left",
-        // background: "linear-gradient(to right, #6a11cb 0%, #2575fc 100%)",
-        // background: "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);",
-        // background: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);",
-        background: "linear-gradient(to top, #dfe9f3 0%, white 100%);"
+        background: "linear-gradient(to right, var(--lime) 0%, var(--lime-hover) 100%)",
       }}
     />
   );
