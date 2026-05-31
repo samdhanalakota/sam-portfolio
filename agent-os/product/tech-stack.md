@@ -35,3 +35,20 @@ Vercel — connected to GitHub, auto-deploy on push
 ## Logo
 public/logo.png — white SD monogram, use next/image
 Dark mode: as-is | Light mode: CSS invert filter
+
+## Component Library
+shadcn/ui (base-nova preset) — components in components/ui/
+Add components via: npx shadcn@latest add [component]
+
+## i18n
+Lightweight JSON translation utility in lib/i18n/
+Mimics react-i18next API — swap-ready for real i18next
+Locale files: lib/i18n/locales/en/[section].json
+French support planned for later
+
+## CSS Token Ownership
+Our tokens: --bg-primary, --bg-secondary, --bg-card,
+  --text-primary, --text-secondary, --text-muted,
+  --custom-border, --lime
+shadcn tokens: --border, --accent, --background, --foreground
+Never override shadcn tokens.

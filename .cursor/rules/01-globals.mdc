@@ -31,8 +31,8 @@ Apply both to html element via next/font
 --text-primary: #0a0a0a
 --text-secondary: #444444
 --text-muted: #888888
---border: #e0e0e0
---accent: #0a0a0a
+--custom-border: #e0e0e0
+--lime: #0a0a0a
 
 ### Dark Mode (.dark)
 --bg-primary: #0a0a0a
@@ -41,8 +41,8 @@ Apply both to html element via next/font
 --text-primary: #f5f5f5
 --text-secondary: #a3a3a3
 --text-muted: #555555
---border: #222222
---accent: #f5f5f5
+--custom-border: #222222
+--lime: #f5f5f5
 
 ## Base Rules
 - html: scroll-behavior smooth

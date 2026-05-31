@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Playfair_Display, Space_Grotesk, Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import CustomCursor from "@/components/CustomCursor";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -16,6 +19,12 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-body",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable}`}
+      className={cn(spaceGrotesk.variable, inter.variable, playfair.variable, "font-sans", geist.variable)}
       suppressHydrationWarning
     >
       <body

@@ -1,38 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = [
-  { label: "INTRO", id: "intro" },
-  { label: "ABOUT", id: "about" },
-  { label: "PROJECTS", id: "projects" },
-  { label: "SKILLS", id: "skills" },
-  { label: "JOURNEY", id: "journey" },
-  { label: "CONTACT", id: "contact" },
-] as const;
+import { useTranslation } from "@/hooks/useTranslation";
+import { NAV_ITEMS } from "@/lib/constants/navigation";
+import { scrollToSection } from "@/lib/utils/scroll";
 
+/**
+ * Main site navigation with active-section tracking and mobile menu.
+ *
+ * @remarks
+ * Client component — depends on theme state, viewport scroll and
+ * section intersection tracking.
+ */
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { t } = useTranslation("navbar");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("intro");
-
-  const scrollToSection = (id: string) => {
-    const target = document.getElementById(id);
-    if (!target) return;
-
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-    setIsMobileMenuOpen(false);
-  };
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isDark = theme !== "light";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,55 +39,54 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const ids = NAV_ITEMS.map((item) => item.id);
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visibleEntry) {
-          setActiveSection(visibleEntry.target.id);
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
       },
-      {
-        threshold: [0.25, 0.5, 0.75],
-        rootMargin: "-35% 0px -45% 0px",
-      }
+      { threshold: 0.5 }
     );
 
-    NAV_ITEMS.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) {
-        observer.observe(section);
-      }
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
     });
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
+
+  const onNavClick = (id: string) => {
+    scrollToSection(id);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
       <header
         className={`fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 ${
           isScrolled
-            ? "border-[var(--border)] bg-[var(--bg-primary)]/80 backdrop-blur-md"
+            ? "border-[var(--custom-border)] bg-[var(--bg-primary)]/80 backdrop-blur-md"
             : "border-transparent bg-transparent"
         }`}
+        style={{ paddingRight: "2rem" }}
       >
         <nav className="relative flex h-20 w-full items-center justify-between px-6 md:pl-10 md:pr-10">
           <button
             type="button"
-            onClick={() => scrollToSection("intro")}
+            onClick={() => onNavClick("intro")}
             className="flex items-center"
-            aria-label="Scroll to intro"
+            aria-label={t("nav_items.intro")}
           >
             <Image
-              src={!mounted || theme === "dark" ? "/logo-dark.png" : "/logo-light.png"}
-              alt="Sam Dhanalakota"
+              src={isDark ? "/logo-dark.png" : "/logo-light.png"}
+              alt={t("logo_alt")}
               width={70}
               height={70}
+              className="h-auto w-auto"
               priority
             />
           </button>
@@ -108,29 +98,29 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => onNavClick(item.id)}
+                  style={{ color: isActive ? "#CCFF00" : undefined }}
                   className={`[font-family:var(--font-display)] text-[13px] font-bold uppercase tracking-widest transition-colors duration-200 ${
                     isActive
-                      ? "text-[var(--text-primary)]"
+                      ? ""
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
-                  {item.label}
+                  {t(`nav_items.${item.id}`)}
                 </button>
               );
             })}
           </div>
 
-          <div className="hidden items-center pr-8 md:flex">
+          <div className="hidden items-center pr-8 md:flex md:pr-12">
             <button
               type="button"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--border)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--text-primary)]"
-              style={{ marginRight: "1rem" }}
-              aria-label="Toggle theme"
+              className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--text-primary)]"
+              aria-label={t("toggle_theme")}
             >
               <AnimatePresence mode="wait" initial={false}>
-                {mounted && theme === "dark" ? (
+                {isDark ? (
                   <motion.span
                     key="sun"
                     initial={{ opacity: 0, rotate: -90, scale: 0.75 }}
@@ -139,7 +129,7 @@ export default function Navbar() {
                     transition={{ duration: 0.2 }}
                     className="flex"
                   >
-                  <Sun size={18} />
+                    <Sun size={18} />
                   </motion.span>
                 ) : (
                   <motion.span
@@ -150,7 +140,7 @@ export default function Navbar() {
                     transition={{ duration: 0.2 }}
                     className="flex"
                   >
-                  <Moon size={18} />
+                    <Moon size={18} />
                   </motion.span>
                 )}
               </AnimatePresence>
@@ -160,8 +150,8 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--border)] text-[var(--text-primary)] md:hidden"
-            aria-label="Open mobile menu"
+            className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] md:hidden"
+            aria-label={t("open_menu")}
           >
             <Menu size={18} />
           </button>
@@ -181,8 +171,8 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--border)] text-[var(--text-primary)]"
-                aria-label="Close mobile menu"
+                className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)]"
+                aria-label={t("close_menu")}
               >
                 <X size={18} />
               </button>
@@ -193,10 +183,10 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => scrollToSection(item.id)}
-                  className="[font-family:var(--font-display)] text-[var(--text-secondary)] text-[18px] font-semibold uppercase tracking-wide transition-colors duration-200 hover:text-[var(--text-primary)]"
+                  onClick={() => onNavClick(item.id)}
+                  className="text-[18px] font-semibold uppercase tracking-wide text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)] [font-family:var(--font-display)]"
                 >
-                  {item.label}
+                  {t(`nav_items.${item.id}`)}
                 </button>
               ))}
             </div>

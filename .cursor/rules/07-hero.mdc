@@ -1,0 +1,147 @@
+---
+description: Hero section component rules
+globs: components/sections/Hero.tsx
+alwaysApply: true
+---
+
+# Hero Section
+
+## Overview
+Full viewport height dark section. Two column layout —
+content left (~60%), photo right (~35%). Vertically centered.
+Dark background with subtle noise grain texture overlay.
+
+## Accent Color
+#CCFF00 — lime green. Used for primary button and highlight only.
+Add to globals.css as --accent: #CCFF00
+
+## Layout
+- Full viewport: min-h-screen
+- Two columns: content left, photo right
+- Content: flex flex-col justify-center
+- Outer padding: px-10 md:px-20
+- Gap between columns: gap-16
+- Section id: "intro"
+- Position relative (for scroll indicator)
+
+## Noise Texture
+Add a subtle grain overlay using CSS:
+```css
+.hero-noise {
+  position: relative;
+}
+.hero-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,...");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+```
+All content inside hero must have position relative z-index 1
+to appear above the noise overlay.
+
+## Content — Left Column
+
+### Label
+`SAM DHANALAKOTA — SENIOR FULL-STACK ENGINEER`
+- Font: Space Grotesk
+- Size: 12px
+- Weight: 500
+- Uppercase, tracking-widest
+- Color: var(--text-muted)
+- Margin bottom: mb-6
+
+### Headline
+`Building AI-native products with React & Node.`
+- Font: Playfair Display
+- Size: text-5xl md:text-6xl lg:text-7xl
+- Weight: 700
+- Color: var(--text-primary)
+- Line height: leading-tight
+- Margin bottom: mb-6
+- Line breaks:
+  Line 1: "Building AI-native"
+  Line 2: "products with React"
+  Line 3: "& Node."
+
+### Sub Paragraph
+`Full-stack engineer crafting secure, high-performance systems for enterprise teams — powered by AI.`
+- Font: Inter
+- Size: 16px
+- Weight: 400
+- Color: var(--text-secondary)
+- Max width: max-w-md
+- Line height: leading-relaxed
+- Margin bottom: mb-10
+
+### Buttons Row
+Two buttons side by side, gap-4, flex-wrap
+
+**Primary — VIEW WORK:**
+- Background: #CCFF00
+- Text color: #000000
+- Font: Space Grotesk 13px bold uppercase tracking-widest
+- Padding: px-8 py-4
+- Border radius: rounded-full
+- Hover: opacity-90
+- On click: scrolls to #projects
+
+**Secondary — GET IN TOUCH:**
+- Background: transparent
+- Border: 1.5px solid var(--text-primary)
+- Text color: var(--text-primary)
+- Font: Space Grotesk 13px bold uppercase tracking-widest
+- Padding: px-8 py-4
+- Border radius: rounded-full
+- Hover: bg-[var(--text-primary)] text-[var(--bg-primary)]
+- On click: scrolls to #contact
+- Transition: all 200ms ease
+
+## Photo — Right Column
+
+### Container
+- Rounded rectangle: rounded-2xl
+- Border: 1px solid var(--border)
+- Overflow hidden
+- Max width: max-w-sm md:max-w-md
+- Aspect ratio: aspect-[3/4]
+- Position relative
+
+### Image
+- src: /hero-photo.jpg
+- Use next/image
+- fill prop
+- object-fit: cover
+- object-position: top center
+- No filter — keep color
+
+## Scroll Indicator
+- Position: absolute bottom-8 left-1/2 -translate-x-1/2
+- Flex column items-center gap-2
+- "SCROLL" text: Space Grotesk 10px uppercase tracking-widest var(--text-muted)
+- Animated line below text:
+  motion.div height 48px width 1px bg var(--text-muted)
+  animate: scaleY 0→1→0 repeat infinite
+  duration 1.5s ease-in-out
+  origin-top
+
+## Entrance Animations
+Use framer-motion. All animate on mount (not scroll triggered).
+Stagger children:
+- Label: delay 0.1
+- Headline: delay 0.3
+- Sub paragraph: delay 0.5
+- Buttons: delay 0.7
+- Photo: delay 0.4, slides in from right (x: 40 → 0)
+
+## Rules
+- "use client" required
+- Add Playfair Display to layout.tsx via next/font/google
+- All colors via CSS variables except #CCFF00 and button black text
+- next/image for photo
+- No hardcoded layout values — use Tailwind classes
+- Section id must be "intro"
+- z-index 1 on all content (above noise overlay)

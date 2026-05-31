@@ -1,0 +1,57 @@
+---
+description: Translation and i18n standards
+globs: **/*
+alwaysApply: true
+---
+# i18n Standards
+
+## Pattern
+Lightweight translation utility that mimics react-i18next API.
+Designed to be swapped for the real react-i18next when 
+multi-language support is needed (French planned).
+
+## File Location
+lib/i18n/
+  config.ts          ← getTranslations() function
+  locales/
+    en/
+      hero.json
+      navbar.json
+      footer.json
+      common.json
+      about.json      ← add when building About section
+      projects.json   ← add when building Projects section
+      skills.json     ← add when building Skills section
+      journey.json    ← add when building Journey section
+      contact.json    ← add when building Contact section
+
+## Usage in Components
+```typescript
+// In any client component
+const { t } = useTranslation('hero');
+t('headline_1') // returns "Building AI-native"
+
+// In server components
+const t = getTranslations('hero');
+t('headline_1') // returns "Building AI-native"
+```
+
+## Rules
+- Every user-facing string must come from a JSON file
+- No hardcoded strings in any component
+- Add new JSON file for each new section
+- Keys must be snake_case
+- Add namespace to Namespace type in config.ts when adding new file
+- Always add JSDoc example showing key usage
+
+## Adding a New Section's Translations
+1. Create lib/i18n/locales/en/[section].json
+2. Add namespace to Namespace type in config.ts
+3. Import JSON in config.ts locales object
+4. Use useTranslation('[section]') in the component
+
+## Future — Adding French
+1. Create lib/i18n/locales/fr/[section].json
+2. Add 'fr' to supported locales in config.ts
+3. Swap useTranslation hook for react-i18next useTranslation
+4. The component code stays identical — only the hook changes

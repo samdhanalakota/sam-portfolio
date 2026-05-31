@@ -5,6 +5,13 @@ import { useEffect, useState } from "react";
 
 const HOVER_SELECTOR = 'button, a, [data-cursor="pointer"]';
 
+/**
+ * Decorative custom cursor with interactive hover and click states.
+ *
+ * @remarks
+ * Client component — disabled on touch devices and does not
+ * interfere with pointer events.
+ */
 export default function CustomCursor() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isHoveringInteractive, setIsHoveringInteractive] = useState(false);

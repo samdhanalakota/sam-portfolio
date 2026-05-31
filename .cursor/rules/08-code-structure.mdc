@@ -1,0 +1,65 @@
+---
+alwaysApply: true
+description: Project folder structure and code organization standards
+globs: **/*
+---
+
+# Code Structure Standards
+
+## Folder Structure
+lib/
+  constants/
+    navigation.ts
+  utils/
+    scroll.ts
+  i18n/
+    config.ts
+    locales/
+      en/
+        common.json
+        hero.json
+        navbar.json
+        footer.json
+hooks/
+  useTranslation.ts
+  useScrollSection.ts
+components/
+  ui/          ← already exists from shadcn
+  sections/
+    Hero.tsx   ← move from components/Hero.tsx
+  layout/
+    Navbar.tsx ← move from components/Navbar.tsx
+    Footer.tsx ← move from components/Footer.tsx
+
+## Import Rules
+- Always use @/ alias — never relative paths like ../../
+- Constants: import from '@/lib/constants/navigation'
+- Utils: import from '@/lib/utils/scroll'
+- Hooks: import from '@/hooks/useTranslation'
+- UI components: import from '@/components/ui/button'
+- Never import between sections/ components directly
+
+## Naming Conventions
+- Components: PascalCase (Hero.tsx, Navbar.tsx)
+- Hooks: camelCase with use prefix (useTranslation.ts)
+- Utils: camelCase (scroll.ts)
+- Constants: SCREAMING_SNAKE_CASE for values (NAV_ITEMS)
+- JSON locale files: snake_case keys
+
+## Component Rules
+- Every exported component has a JSDoc comment above it
+- Every exported function has a JSDoc comment
+- "use client" only when using hooks or browser APIs
+- No hardcoded strings in components — use useTranslation
+- No hardcoded colors — use CSS variables
+- No inline styles except for dynamic values
+
+## CSS Token Rules
+- Our custom tokens: --bg-primary, --bg-secondary, --bg-card,
+  --text-primary, --text-secondary, --text-muted,
+  --custom-border, --lime
+- shadcn tokens: --background, --foreground, --primary etc
+- Never use --border (shadcn owns this)
+- Never use --accent (shadcn owns this)
+- Use --custom-border for all border colors
+- Use --lime (#CCFF00) for accent/highlight color

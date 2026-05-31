@@ -1,0 +1,59 @@
+---
+description: shadcn/ui usage standards
+globs: **/*
+alwaysApply: true
+---
+
+# shadcn/ui Standards
+
+## Setup
+- Style: base-nova
+- Icon library: lucide-react
+- Component location: components/ui/
+- Config: components.json
+
+## Usage Rules
+- Always import from '@/components/ui/[component]'
+- Never modify files inside components/ui/ directly
+- Use shadcn CLI to add new components:
+  npx shadcn@latest add [component]
+- Customize via className prop, not by editing source
+
+## Button Usage
+```tsx
+import { Button } from '@/components/ui/button'
+
+// Primary — lime green
+<Button
+  className="bg-[#CCFF00] text-black hover:opacity-90 rounded-full px-8 py-4"
+  size="lg"
+>
+  VIEW WORK
+</Button>
+
+// Secondary — outline
+<Button
+  variant="outline"
+  className="rounded-full px-8 py-4 border-[var(--text-primary)]"
+  size="lg"
+>
+  GET IN TOUCH
+</Button>
+```
+
+## Available Components (add as needed)
+Run: npx shadcn@latest add [name]
+- button ← already used
+- card ← for project cards
+- badge ← for skill tags
+- separator ← for dividers
+- dialog ← for modals
+- form ← for contact form
+- input ← for contact form
+- textarea ← for contact form
+- toast ← for form submission feedback
+
+## Token Conflicts
+shadcn owns: --border, --accent, --background, --foreground
+We own: --custom-border, --lime, --bg-primary, --text-primary
+Never override shadcn tokens with our values.

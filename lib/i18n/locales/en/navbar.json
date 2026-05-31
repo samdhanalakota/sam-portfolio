@@ -1,0 +1,14 @@
+{
+  "logo_alt": "Sam Dhanalakota logo",
+  "toggle_theme": "Toggle theme",
+  "open_menu": "Open mobile menu",
+  "close_menu": "Close mobile menu",
+  "nav_items": {
+    "intro": "INTRO",
+    "about": "ABOUT",
+    "projects": "PROJECTS",
+    "skills": "SKILLS",
+    "journey": "JOURNEY",
+    "contact": "CONTACT"
+  }
+}

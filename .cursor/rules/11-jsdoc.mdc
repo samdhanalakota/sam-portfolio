@@ -1,0 +1,67 @@
+---
+description: JSDoc and commenting standards
+globs: **/*
+alwaysApply: true
+---
+
+# JSDoc Standards
+
+## Every Exported Component
+```tsx
+/**
+ * Hero section — first visible section of the portfolio.
+ * Displays name, headline, subparagraph, CTAs and photo.
+ *
+ * @remarks
+ * Client component — uses framer-motion animations and
+ * scroll utilities.
+ */
+export function Hero() { ... }
+```
+
+## Every Exported Function
+```typescript
+/**
+ * Smoothly scrolls the page to a section by its DOM id.
+ * @param id - The id attribute of the target section element
+ * @returns void
+ *
+ * @example
+ * scrollToSection('projects') // scrolls to <section id="projects">
+ */
+export function scrollToSection(id: string): void { ... }
+```
+
+## Every Custom Hook
+```typescript
+/**
+ * Returns translation function for the given namespace.
+ * Mimics react-i18next useTranslation API.
+ *
+ * @param ns - Namespace matching a locale JSON file
+ * @returns Object with t() translation function
+ *
+ * @example
+ * const { t } = useTranslation('hero');
+ * t('headline_1') // "Building AI-native"
+ */
+export function useTranslation(ns: Namespace) { ... }
+```
+
+## Inline Comments
+- Explain WHY not WHAT
+- Only comment non-obvious logic
+- Use // for single line, /* */ for multi-line
+
+## What NOT to Comment
+- Obvious code: `// set state to true`
+- Import statements
+- Self-explanatory variable names
+
+## File Headers (optional but good)
+```typescript
+/**
+ * @fileoverview Navigation constants used across Navbar and Footer.
+ * @module lib/constants/navigation
+ */
+```

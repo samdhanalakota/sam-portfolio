@@ -1,12 +1,14 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/sections/Hero";
+
+const NAV_ITEMS = ["about", "projects", "skills", "journey", "contact"];
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <main>
-        {["intro", "about", "projects", "skills", "journey", "contact"].map((id) => (
+      <main className="w-full">
+        <Hero />
+        {NAV_ITEMS.map((id) => (
           <section
             key={id}
             id={id}
