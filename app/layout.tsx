@@ -31,6 +31,10 @@ export const metadata: Metadata = {
   title: "Sam Dhanalakota — Senior Full-Stack Engineer",
   description:
     "Senior Full-Stack Engineer building enterprise platforms at scale. React, TypeScript, Node.js, AWS. Based in Vancouver, BC.",
+  icons: {
+    icon: "/logo-dark.png",
+    apple: "/logo-dark.png",
+  },
 };
 
 export default function RootLayout({

@@ -11,6 +11,7 @@ import aboutEn from "./locales/en/about.json";
 import projectsEn from "./locales/en/projects.json";
 import skillsEn from "./locales/en/skills.json";
 import journeyEn from "./locales/en/journey.json";
+import contactEn from "./locales/en/contact.json";
 
 /** Supported namespaces */
 export type Namespace =
@@ -20,7 +21,8 @@ export type Namespace =
   | "about"
   | "projects"
   | "skills"
-  | "journey";
+  | "journey"
+  | "contact";
 
 /** All locale data keyed by namespace */
 const locales: Record<Namespace, Record<string, unknown>> = {
@@ -31,6 +33,7 @@ const locales: Record<Namespace, Record<string, unknown>> = {
   projects: projectsEn,
   skills: skillsEn,
   journey: journeyEn,
+  contact: contactEn,
 };
 
 type TranslationOptions = {

@@ -1,0 +1,56 @@
+{
+  "section_number": "05",
+  "section_label": "CONTACT",
+  "heading": "Let's",
+  "subtext": "Tell me what you're shipping.",
+  "availability": {
+    "fulltime": "Open to full-time",
+    "contract": "Open to contract",
+    "freelance": "Available for freelance"
+  },
+  "tabs": {
+    "message": "Send a Message",
+    "schedule": "Schedule a Call"
+  },
+  "message": {
+    "description": "Submit the form below to get in touch with me.",
+    "fields": {
+      "name": "Your Name",
+      "name_placeholder": "Jane Smith",
+      "email": "Email Address",
+      "email_placeholder": "jane@company.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project..."
+    },
+    "button": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent. I'll get back to you soon.",
+    "error": "Something went wrong. Try emailing me directly."
+  },
+  "info": {
+    "email": {
+      "label": "Email",
+      "value": "samdsiva1994@gmail.com",
+      "href": "mailto:samdsiva1994@gmail.com"
+    },
+    "phone": {
+      "label": "Phone",
+      "value": "+1 (778) 800-6535",
+      "href": "tel:+17788006535"
+    },
+    "location": {
+      "label": "Location",
+      "value": "Vancouver, BC, Canada"
+    },
+    "availability": {
+      "label": "Availability",
+      "value": "I typically respond within 24–48 hours."
+    }
+  },
+  "social": {
+    "heading": "Social Handles",
+    "linkedin": "https://www.linkedin.com/in/sam-dhanalakota/",
+    "github": "https://github.com/samdhanalakota",
+    "email": "samdsiva1994@gmail.com"
+  }
+}
