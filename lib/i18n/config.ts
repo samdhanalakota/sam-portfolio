@@ -7,15 +7,17 @@
 import heroEn from "./locales/en/hero.json";
 import navbarEn from "./locales/en/navbar.json";
 import footerEn from "./locales/en/footer.json";
+import aboutEn from "./locales/en/about.json";
 
 /** Supported namespaces */
-export type Namespace = "hero" | "navbar" | "footer";
+export type Namespace = "hero" | "navbar" | "footer" | "about";
 
 /** All locale data keyed by namespace */
 const locales: Record<Namespace, Record<string, unknown>> = {
   hero: heroEn,
   navbar: navbarEn,
   footer: footerEn,
+  about: aboutEn,
 };
 
 /**
