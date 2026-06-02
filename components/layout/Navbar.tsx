@@ -53,7 +53,7 @@ export default function Navbar() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: "-80px 0px 0px 0px" }
     );
 
     ids.forEach((id) => {

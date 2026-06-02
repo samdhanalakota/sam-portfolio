@@ -8,9 +8,10 @@ import heroEn from "./locales/en/hero.json";
 import navbarEn from "./locales/en/navbar.json";
 import footerEn from "./locales/en/footer.json";
 import aboutEn from "./locales/en/about.json";
+import projectsEn from "./locales/en/projects.json";
 
 /** Supported namespaces */
-export type Namespace = "hero" | "navbar" | "footer" | "about";
+export type Namespace = "hero" | "navbar" | "footer" | "about" | "projects";
 
 /** All locale data keyed by namespace */
 const locales: Record<Namespace, Record<string, unknown>> = {
@@ -18,6 +19,16 @@ const locales: Record<Namespace, Record<string, unknown>> = {
   navbar: navbarEn,
   footer: footerEn,
   about: aboutEn,
+  projects: projectsEn,
+};
+
+type TranslationOptions = {
+  returnObjects?: boolean;
+};
+
+type TranslationFunction = {
+  (key: string): string;
+  <T>(key: string, options: { returnObjects: true }): T;
 };
 
 /**
@@ -44,12 +55,16 @@ function resolvePath(source: Record<string, unknown>, path: string): unknown {
  */
 export function getTranslations(ns: Namespace) {
   const data = locales[ns];
-  return function t(key: string): string {
+  return function t<T = string>(
+    key: string,
+    options?: TranslationOptions
+  ): string | T {
     const value = resolvePath(data, key);
+    if (options?.returnObjects) return value as T;
     if (typeof value === "string") return value;
     console.warn(
       `[i18n] Missing translation for key: "${key}" in namespace: "${ns}"`
     );
     return key;
-  };
+  } as TranslationFunction;
 }

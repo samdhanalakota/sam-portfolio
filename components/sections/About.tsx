@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 
 import { useTranslation } from "@/hooks/useTranslation";
-
-import styles from "./About.module.css";
+import styles from "@/components/sections/About.module.css";
 
 /**
  * About section — introduces Sam with a two-column typography layout.
@@ -16,7 +15,6 @@ export default function About() {
   return (
     <section id="about" className={styles.section}>
       <div className={styles.grid}>
-        {/* Left column */}
         <motion.div
           className={styles.leftColumn}
           initial={{ opacity: 0, x: -30 }}
@@ -32,7 +30,6 @@ export default function About() {
           <h3 className={styles.secondaryHeading}>{t("secondary_heading")}</h3>
         </motion.div>
 
-        {/* Right column */}
         <div className={styles.rightColumn}>
           <motion.p
             className={styles.primaryParagraph}

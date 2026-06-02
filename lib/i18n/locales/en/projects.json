@@ -1,0 +1,115 @@
+{
+  "section_number": "02",
+  "section_label": "PROJECTS",
+  "heading": "Featured Work",
+  "subheading": "Full-stack engineering across security, gaming, and enterprise",
+  "scope_tab": "SCOPE",
+  "tech_tab": "TECH",
+  "cta": "View Case Study",
+  "projects": [
+    {
+      "id": "soc-workforce",
+      "number": "01",
+      "title": "SOC Workforce Management Platform",
+      "description": "Sole architect and engineer on a 0-to-1 greenfield platform integrating two enterprise systems — real-time case management for global security operations.",
+      "scope": "30,000+ enterprises · 6 global SOCs · 5-second case claim time · Zero critical incidents post-launch",
+      "gradient": "linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #0d0d3d 100%)",
+      "tech_badges": [
+        "React",
+        "NestJS",
+        "Jotai",
+        "AWS SQS",
+        "EventBridge",
+        "PostgreSQL",
+        "Kubernetes",
+        "Terraform",
+        "Ruby on Rails",
+        "TypeScript",
+        "GraphQL",
+        "WebSockets"
+      ],
+      "metric": "30,000+ enterprises"
+    },
+    {
+      "id": "contact-centre-xdr",
+      "number": "02",
+      "title": "Contact Centre & XDR Integration",
+      "description": "Post-acquisition integration bridging an enterprise contact centre and XDR security platform — solving a complex 3-hop cross-service identity chain.",
+      "scope": "24/7 threat operations · Multi-platform identity resolution · Zero downtime deployment · DLQ-backed event pipeline",
+      "gradient": "linear-gradient(135deg, #0a2e2e 0%, #0a1a2e 50%, #051a2e 100%)",
+      "tech_badges": [
+        "NestJS",
+        "AWS SQS",
+        "EventBridge",
+        "OAuth2 PKCE",
+        "DynamoDB",
+        "GraphQL",
+        "Helm"
+      ],
+      "metric": "Zero downtime"
+    },
+    {
+      "id": "fido2-auth",
+      "number": "03",
+      "title": "Phishing-Resistant Auth Migration",
+      "description": "Migrated enterprise portal authentication from TOTP to FIDO2 hardware security keys — full WebAuthn implementation with phased 1%→100% rollout.",
+      "scope": "Zero user lockouts · Phishing exposure eliminated · Phased 1%→100% rollout · Legacy auth stack deprecated",
+      "gradient": "linear-gradient(135deg, #1a0a2e 0%, #2e0a4e 50%, #1a052e 100%)",
+      "tech_badges": [
+        "WebAuthn",
+        "React",
+        "Ruby on Rails",
+        "AWS Cognito",
+        "Lambda",
+        "Redis",
+        "LaunchDarkly"
+      ],
+      "metric": "Zero lockouts"
+    },
+    {
+      "id": "mdr-platform",
+      "number": "04",
+      "title": "MDR Analyst Platform",
+      "description": "Architected a modular domain-driven React SPA for global security operations — Cases, Dashboards, Reports, and Users as independently owned modules.",
+      "scope": "10M+ protected endpoints · 40% faster feature delivery · 6 global SOCs · Real-time analyst operations",
+      "gradient": "linear-gradient(135deg, #0a2e1a 0%, #0a1a0a 50%, #051a0d 100%)",
+      "tech_badges": [
+        "React 18",
+        "TypeScript",
+        "Jotai",
+        "GraphQL",
+        "WebSockets",
+        "Turborepo",
+        "Storybook"
+      ],
+      "metric": "10M+ endpoints"
+    },
+    {
+      "id": "endpoint-security",
+      "number": "05",
+      "title": "Endpoint Security Mobile App",
+      "description": "Two years of production work on a cross-platform endpoint security application — protection workflows and device management across iOS and Android.",
+      "scope": "10M+ device installs · iOS + Android · Protection workflows · Device management at scale",
+      "gradient": "linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #0d0d2e 100%)",
+      "tech_badges": ["React Native", "TypeScript", "iOS", "Android"],
+      "metric": "10M+ installs"
+    },
+    {
+      "id": "ea-play",
+      "number": "06",
+      "title": "EA Play Social Platform",
+      "description": "Built real-time social features for EA Play and created the Cube test automation framework used across engineering teams.",
+      "scope": "Millions of subscribers · Real-time at scale · Internal framework adopted across teams · CI/CD pipeline integration",
+      "gradient": "linear-gradient(135deg, #2e0a0a 0%, #1a0a1a 50%, #1a050a 100%)",
+      "tech_badges": [
+        "React",
+        "TypeScript",
+        "WebSockets",
+        "WebDriverIO",
+        "Jenkins",
+        "PowerShell"
+      ],
+      "metric": "Millions of users"
+    }
+  ]
+}

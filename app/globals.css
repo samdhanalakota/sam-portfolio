@@ -63,6 +63,7 @@
   --btn-outline-hover-bg: rgba(101, 163, 13, 0.08);
   --btn-outline-hover-border: #65a30d;
   --nav-active: #4d7c0f;
+  --metric: #0369a1;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -113,6 +114,7 @@
   --btn-outline-hover-bg: rgba(132, 204, 22, 0.1);
   --btn-outline-hover-border: #a3e635;
   --nav-active: #a3e635;
+  --metric: #60a5fa;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

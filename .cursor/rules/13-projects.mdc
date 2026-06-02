@@ -1,0 +1,123 @@
+---
+description: Projects section component rules
+globs: components/sections/Projects.tsx
+alwaysApply: true
+---
+
+# Projects Section
+
+## Overview
+Full viewport section with section label, heading, and a
+horizontal scrollable row of 6 project cards.
+Each card has an SVG architecture diagram, title, description,
+SCOPE/TECH toggle tabs, and a View Case Study CTA.
+
+## Section id
+id="projects"
+
+## Layout
+- Full viewport: min-h-screen
+- Section padding: same as About — px-6 md:px-16 lg:px-24
+- Top border: border-t border-[var(--custom-border)]
+- Background: var(--bg-primary)
+- Section label: "02 — PROJECTS"
+- Heading: "Featured Work"
+
+## Horizontal Scroll Container
+- overflow-x: auto, overflow-y: hidden
+- scroll-behavior: smooth
+- Hide scrollbar (custom CSS)
+- display: flex, gap: 1.5rem
+- padding-bottom: 1.5rem (for scrollbar space)
+- Cursor: grab while dragging
+- Mouse drag to scroll — implement with mousedown/mousemove/mouseup
+- Touch scroll native
+
+## Card Specs
+- Width: 360px — fixed, flex-shrink: 0
+- Min-height: 560px
+- Background: var(--bg-card)
+- Border: 1px solid var(--custom-border)
+- Border radius: 16px
+- Padding: 0 (image flush to top, content padded inside)
+- Hover: border-color → var(--lime), translateY(-6px)
+- Transition: all 300ms ease
+
+## Card Structure (top to bottom)
+1. Diagram container — top of card, no padding, overflow hidden, rounded-t-2xl
+   - Height: 180px
+   - Contains SVG diagram component
+   - On hover: diagram scales to 1.04 (zoom effect)
+   - Background: var(--bg-secondary)
+
+2. Content area — padding: 1.5rem
+   - Project number: font-display, text-xs, muted, mb-1
+   - Title: font-display, text-lg, bold, text-primary, mb-2
+   - Description: font-body, text-sm, text-secondary, leading-relaxed, mb-4
+   - SCOPE/TECH toggle: two buttons side by side
+   - Tab content: min-height 80px, text-sm
+   - Tech badges: flex-wrap, gap-1.5, mt-3
+   - Divider: 1px border-t border-[var(--custom-border)], my-4
+   - CTA: "View Case Study →" text link, lime color, hover arrow animates right
+
+## SCOPE/TECH Toggle
+- Two pill buttons: SCOPE | TECH
+- Active: bg-[var(--lime)] text-black
+- Inactive: border border-[var(--custom-border)] text-muted
+- State managed per card with useState
+- Default active tab: SCOPE
+
+## SCOPE Tab Content
+- Shows project metric (large, lime colored)
+- Shows scope description text (small, muted)
+
+## TECH Tab Content
+- Shows tech stack badges
+- Badge style: text-xs, border border-[var(--custom-border)],
+  rounded-full, px-2 py-0.5, text-secondary
+
+## SVG Diagrams
+Each project has a unique SVG diagram component.
+Located in: components/diagrams/
+- SocWorkflowDiagram.tsx
+- ContactCentreXdrDiagram.tsx
+- Fido2AuthDiagram.tsx
+- MdrPlatformDiagram.tsx
+- EndpointSecurityDiagram.tsx
+- EaPlayDiagram.tsx
+
+SVG style rules:
+- ViewBox: "0 0 360 180"
+- Background: transparent (card bg shows through)
+- Node boxes: fill var(--bg-card), stroke var(--custom-border)
+- Arrow lines: stroke var(--lime), strokeWidth 1.5
+- Text labels: fill var(--text-muted), font-size 10px
+- Key/primary nodes: stroke var(--lime)
+- Font: var(--font-display)
+
+## Drag to Scroll
+Implement with useRef on scroll container:
+- onMouseDown: set isDragging true, record startX
+- onMouseMove: if isDragging, scroll container by delta
+- onMouseUp/onMouseLeave: set isDragging false
+- cursor: grab normally, grabbing while dragging
+
+## Dot Indicators
+- Row of dots below scroll container
+- One dot per card
+- Active dot: lime color, wider (12px)
+- Inactive: var(--custom-border), 8px
+- Update active dot based on scroll position
+
+## Animations
+- Section heading: fade up on scroll into view
+- Cards: stagger fade up as section enters viewport
+  delay: index * 0.1
+
+## Rules
+- "use client" required
+- CSS Modules: Projects.module.css
+- All text from useTranslation('projects')
+- Add 'projects' to Namespace in lib/i18n/config.ts
+- No inline styles
+- No hardcoded colors
