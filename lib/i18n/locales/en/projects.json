@@ -85,18 +85,8 @@
       "metric": "10M+ endpoints"
     },
     {
-      "id": "endpoint-security",
-      "number": "05",
-      "title": "Endpoint Security Mobile App",
-      "description": "Two years of production work on a cross-platform endpoint security application — protection workflows and device management across iOS and Android.",
-      "scope": "10M+ device installs · iOS + Android · Protection workflows · Device management at scale",
-      "gradient": "linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #0d0d2e 100%)",
-      "tech_badges": ["React Native", "TypeScript", "iOS", "Android"],
-      "metric": "10M+ installs"
-    },
-    {
       "id": "ea-play",
-      "number": "06",
+      "number": "05",
       "title": "EA Play Social Platform",
       "description": "Built real-time social features for EA Play and created the Cube test automation framework used across engineering teams.",
       "scope": "Millions of subscribers · Real-time at scale · Internal framework adopted across teams · CI/CD pipeline integration",
@@ -110,6 +100,16 @@
         "PowerShell"
       ],
       "metric": "Millions of users"
+    },
+    {
+      "id": "endpoint-security",
+      "number": "06",
+      "title": "Endpoint Security Mobile App",
+      "description": "Two years of production work on a cross-platform endpoint security application — protection workflows and device management across iOS and Android.",
+      "scope": "10M+ device installs · iOS + Android · Protection workflows · Device management at scale",
+      "gradient": "linear-gradient(135deg, #1a1a2e 0%, #0a0a1a 50%, #0d0d2e 100%)",
+      "tech_badges": ["React Native", "TypeScript", "iOS", "Android"],
+      "metric": "10M+ installs"
     }
   ]
 }

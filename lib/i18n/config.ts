@@ -9,9 +9,16 @@ import navbarEn from "./locales/en/navbar.json";
 import footerEn from "./locales/en/footer.json";
 import aboutEn from "./locales/en/about.json";
 import projectsEn from "./locales/en/projects.json";
+import skillsEn from "./locales/en/skills.json";
 
 /** Supported namespaces */
-export type Namespace = "hero" | "navbar" | "footer" | "about" | "projects";
+export type Namespace =
+  | "hero"
+  | "navbar"
+  | "footer"
+  | "about"
+  | "projects"
+  | "skills";
 
 /** All locale data keyed by namespace */
 const locales: Record<Namespace, Record<string, unknown>> = {
@@ -20,6 +27,7 @@ const locales: Record<Namespace, Record<string, unknown>> = {
   footer: footerEn,
   about: aboutEn,
   projects: projectsEn,
+  skills: skillsEn,
 };
 
 type TranslationOptions = {
