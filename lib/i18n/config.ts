@@ -10,6 +10,7 @@ import footerEn from "./locales/en/footer.json";
 import aboutEn from "./locales/en/about.json";
 import projectsEn from "./locales/en/projects.json";
 import skillsEn from "./locales/en/skills.json";
+import journeyEn from "./locales/en/journey.json";
 
 /** Supported namespaces */
 export type Namespace =
@@ -18,7 +19,8 @@ export type Namespace =
   | "footer"
   | "about"
   | "projects"
-  | "skills";
+  | "skills"
+  | "journey";
 
 /** All locale data keyed by namespace */
 const locales: Record<Namespace, Record<string, unknown>> = {
@@ -28,6 +30,7 @@ const locales: Record<Namespace, Record<string, unknown>> = {
   about: aboutEn,
   projects: projectsEn,
   skills: skillsEn,
+  journey: journeyEn,
 };
 
 type TranslationOptions = {
@@ -35,7 +38,7 @@ type TranslationOptions = {
 };
 
 type TranslationFunction = {
-  (key: string): string;
+  (key: string): unknown;
   <T>(key: string, options: { returnObjects: true }): T;
 };
 
@@ -66,10 +69,12 @@ export function getTranslations(ns: Namespace) {
   return function t<T = string>(
     key: string,
     options?: TranslationOptions
-  ): string | T {
+  ): unknown | T {
     const value = resolvePath(data, key);
     if (options?.returnObjects) return value as T;
     if (typeof value === "string") return value;
+    if (Array.isArray(value)) return value;
+    if (typeof value === "object" && value !== null) return value;
     console.warn(
       `[i18n] Missing translation for key: "${key}" in namespace: "${ns}"`
     );
