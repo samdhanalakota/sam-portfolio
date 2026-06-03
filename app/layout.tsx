@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Space_Grotesk, Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
@@ -61,6 +63,8 @@ export default function RootLayout({
           <ScrollProgressBar />
           <CustomCursor />
           {children}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
