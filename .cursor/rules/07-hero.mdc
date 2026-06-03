@@ -55,7 +55,7 @@ to appear above the noise overlay.
 - Margin bottom: mb-6
 
 ### Headline
-`Building AI-native products with React & Node.`
+`Building AI-native products with TypeScript, React & Node.`
 - Font: Playfair Display
 - Size: text-5xl md:text-6xl lg:text-7xl
 - Weight: 700

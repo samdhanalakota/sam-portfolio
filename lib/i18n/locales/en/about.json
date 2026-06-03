@@ -4,6 +4,6 @@
   "name": "Sam Dhanalakota",
   "title": "SENIOR FULL-STACK ENGINEER",
   "secondary_heading": "What I've built",
-  "paragraph_primary": "I build secure, scalable enterprise platforms — serving 500+ security analysts across 26,000+ global customers. Currently leading the SMSC platform at Sophos as sole architect and engineer.",
-  "paragraph_secondary": "Full-stack across React, Node.js, NestJS, and Ruby on Rails.  I ship faster with AI — using Claude Code, Cursor, and AgentOS  workflows daily. Based in Vancouver, BC."
+  "paragraph_primary": "{{years}}+ years building production software across security and gaming industries — React frontends, distributed Node.js backends, and cloud infrastructure reaching millions of users globally.",
+  "paragraph_secondary": "I architect full-stack systems end-to-end - from modular React SPAs to NestJS microservices and AWS infrastructure. I ship faster with AI, using Claude Code, Cursor, and AgentOS as core parts of my engineering workflow - not as experiments."
 }

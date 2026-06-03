@@ -44,7 +44,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-6 font-serif font-bold leading-tight text-[var(--hero-heading)]"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
             {t("headline_1")}
             <br />

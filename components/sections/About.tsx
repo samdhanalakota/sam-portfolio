@@ -11,6 +11,11 @@ import styles from "@/components/sections/About.module.css";
  */
 export default function About() {
   const { t } = useTranslation("about");
+  const yearsOfExperience = new Date().getFullYear() - 2020;
+  const primaryText = (t("paragraph_primary") as string).replace("{{years}}", String(yearsOfExperience));
+  const highlightedPrimary = primaryText
+    .replace("security and gaming industries", '<span class="highlight">security and gaming industries</span>')
+    .replace("millions of users globally", '<span class="highlight">millions of users globally</span>');
 
   return (
     <section id="about" className={styles.section}>
@@ -28,27 +33,37 @@ export default function About() {
           <h2 className={styles.name}>{t("name")}</h2>
           <p className={styles.title}>{t("title")}</p>
           <h3 className={styles.secondaryHeading}>{t("secondary_heading")}</h3>
+          <div className={styles.stats}>
+            <div className={styles.statCard}>
+              <span className={styles.statValue}>6+</span>
+              <span className={styles.statLabel}>Years Experience</span>
+            </div>
+            <div className={styles.statCard}>
+              <span className={styles.statValue}>6</span>
+              <span className={styles.statLabel}>Production Systems</span>
+            </div>
+            <div className={styles.statCard}>
+              <span className={styles.statValue}>10M+</span>
+              <span className={styles.statLabel}>Users Reached</span>
+            </div>
+          </div>
         </motion.div>
 
         <div className={styles.rightColumn}>
-          <motion.p
+          <p
             className={styles.primaryParagraph}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {t("paragraph_primary")}
-          </motion.p>
-          <motion.p
-            className={styles.secondaryParagraph}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {t("paragraph_secondary")}
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: highlightedPrimary }}
+          />
+          <div className={styles.secondaryContent}>
+            <p className={styles.secondaryParagraph}>
+              {t("paragraph_secondary") as string}
+            </p>
+            <div className={styles.techPills}>
+              {["NestJS", "React 19", "TypeScript", "Node.js", "AWS", "Ruby on Rails", "PostgreSQL", "Docker", "Kubernetes"].map((tech) => (
+                <span key={tech} className={styles.techPill}>{tech}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -8,14 +8,14 @@
       "role": "Senior Software Engineer III",
       "company": "SOPHOS INC · VANCOUVER, BC",
       "current": true,
-      "description": "React 19, Jotai, TanStack, and WebSockets driving real-time SOC operations — backed by NestJS microservices and AWS SQS pipelines across 30,000+ enterprises."
+      "description": "Architected and shipped multiple production platforms - security analyst tooling, phishing-resistant authentication infrastructure, and real-time workforce management. Full-stack across React, TypeScript, NestJS, Ruby on Rails, and AWS, serving 26,000+ organizations globally."
     },
     {
       "date": "FEB 2020 — SEPT 2021",
       "role": "Software Engineer",
       "company": "ELECTRONIC ARTS · VANCOUVER, BC",
       "current": false,
-      "description": "WebSocket-driven social features for EA Play and the Cube automation framework adopted by 25+ engineers across Jenkins CI/CD pipelines."
+      "description": "Shipped React features across subscription, social, and settings surfaces for EA Play's millions of subscribers. Built the Cube automation framework used by 25+ engineers in Jenkins CI/CD."
     }
   ]
 }

@@ -38,6 +38,7 @@ import NextjsOriginalIcon from "@devicon/react/nextjs/original";
 import NodejsOriginalIcon from "@devicon/react/nodejs/original";
 import PlaywrightOriginalIcon from "@devicon/react/playwright/original";
 import PostgresqlOriginalIcon from "@devicon/react/postgresql/original";
+import { PostmanOriginalIcon } from "@devicon/react";
 import RailsOriginalIcon from "@devicon/react/rails/plain";
 import ReactOriginalIcon from "@devicon/react/react/original";
 import RedisOriginalIcon from "@devicon/react/redis/original";
@@ -137,7 +138,7 @@ const ALL_SKILLS: SkillItem[] = [
   { label: "Git", category: "tools", Icon: GitOriginalIcon, featured: true },
   { label: "Jira", category: "tools", Icon: JiraOriginalIcon, featured: true },
   { label: "Figma", category: "tools", Icon: FigmaOriginalIcon, featured: true },
-  { label: "Postman", category: "tools", Icon: MaterialuiOriginalIcon, featured: true },
+  { label: "Postman", category: "tools", Icon: PostmanOriginalIcon, featured: true },
   { label: "LaunchDarkly", category: "tools", LucideIcon: Flag, featured: true },
   { label: "GitHub", category: "tools", Icon: GithubOriginalIcon },
   { label: "VS Code", category: "tools", Icon: VscodeOriginalIcon },
