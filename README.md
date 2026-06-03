@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sam Dhanalakota — Portfolio
+
+Personal portfolio website built with Next.js 14+, TypeScript, and Tailwind CSS.
+
+🌐 **Live:** [sam-portfolio-ogrg.vercel.app](https://sam-portfolio-ogrg.vercel.app)
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 14+ App Router
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS v4 + CSS Modules
+- **Animation:** Framer Motion
+- **Theme:** next-themes (dark/light)
+- **Icons:** lucide-react + @devicon/react + @lobehub/icons
+- **Email:** Resend
+- **Deployment:** Vercel
+
+---
+
+## Features
+
+- Dark/light theme toggle
+- Custom cursor with hover and click effects
+- Scroll progress indicator
+- Smooth section navigation
+- Horizontal scrolling project cards with SCOPE/TECH toggle
+- Auto-scrolling skills rows with category filters
+- Contact form powered by Resend
+- Fully responsive
+
+---
+
+## Sections
+
+- **Intro** — Hero with animated headline
+- **About** — Bio, stats, and tech stack
+- **Projects** — 6 featured projects with case study links
+- **Skills** — 57 skills across 9 categories
+- **Journey** — Work experience and education timeline
+- **Contact** — Contact form + scheduling
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the project root:
 
-## Learn More
+```env
+RESEND_API_KEY=your_resend_api_key
+RESEND_TO_EMAIL=your_email@gmail.com
+NEXT_PUBLIC_EMAIL=your_email@gmail.com
+NEXT_PUBLIC_LINKEDIN=https://www.linkedin.com/in/your-profile/
+NEXT_PUBLIC_GITHUB=https://github.com/your-username
+NEXT_PUBLIC_PHONE=+1 (000) 000-0000
+NEXT_PUBLIC_CAL_LINK=your-cal-username/connect
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+sam-portfolio/
+├── app/                    # Next.js App Router
+│   ├── api/contact/        # Contact form API route
+│   ├── globals.css         # Global styles + CSS variables
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Home page
+├── components/
+│   ├── layout/             # Navbar, Footer
+│   ├── sections/           # Hero, About, Projects, Skills, Journey, Contact
+│   └── ui/                 # shadcn/ui components
+├── hooks/                  # Custom hooks
+├── lib/
+│   ├── constants/          # Navigation items, social links
+│   ├── i18n/               # Translations (en)
+│   └── utils/              # Utility functions
+├── public/                 # Static assets
+└── agent-os/               # Project context and standards
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — feel free to use this as inspiration for your own portfolio.
+
+---
+
+Built by [Sam Dhanalakota](https://www.linkedin.com/in/sam-dhanalakota/)
