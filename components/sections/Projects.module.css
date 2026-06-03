@@ -64,7 +64,6 @@
 
 .card {
   width: 420px;
-  min-height: auto;
   flex-shrink: 0;
   position: relative;
   background: var(--bg-card);
@@ -73,6 +72,8 @@
   overflow: hidden;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
   transition: transform 300ms ease, box-shadow 300ms ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -124,6 +125,9 @@
 
 .content {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .title {
@@ -215,6 +219,10 @@
   border: 0;
   border-top: 1px solid var(--custom-border);
   margin: 1rem 0;
+}
+
+.ctaGroup {
+  margin-top: auto;
 }
 
 .cta {

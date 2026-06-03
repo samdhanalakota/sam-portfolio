@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send, Calendar, Copy, Check } from "lucide-react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { PERSONAL } from "@/lib/constants/personal";
 import { useTranslation } from "@/hooks/useTranslation";
 import styles from "./Contact.module.css";
 
@@ -84,7 +85,7 @@ export default function Contact() {
           {t("section_number") as string} — {t("section_label") as string}
         </p>
         <h2 className={styles.heading}>
-          {t("heading") as string} <span style={{ color: "#60a5fa" }}>Connect</span>
+          {t("heading") as string} <span className={styles.headingAccent}>Connect</span>
         </h2>
         <p className={styles.subtext}>{t("subtext") as string}</p>
         <div className={styles.availability}>
@@ -107,12 +108,7 @@ export default function Contact() {
       <div className={styles.grid}>
         {/* LEFT — tabbed panel */}
         <motion.div
-          className={styles.leftPanel}
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 100%)",
-            borderColor: "rgba(6,182,212,0.2)",
-          }}
+          className={`${styles.leftPanel} ${styles.accentCard}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -214,7 +210,7 @@ export default function Contact() {
             ) : (
               <div className={styles.calWrap}>
                 <iframe
-                src="https://cal.com/sam-dhanalakota/connect?embed=true&theme=dark"
+                  src={`https://cal.com/${PERSONAL.calLink}?embed=true&theme=dark`}
                   width="100%"
                   frameBorder="0"
                   title="Schedule a call"
@@ -235,12 +231,7 @@ export default function Contact() {
           {/* Email */}
           <a
             href={info.email.href}
-            className={styles.infoCard}
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 100%)",
-              borderColor: "rgba(6,182,212,0.2)",
-            }}
+            className={`${styles.infoCard} ${styles.accentCard}`}
           >
             <div className={styles.infoIconBox}>
               <Mail size={18} />
@@ -265,12 +256,7 @@ export default function Contact() {
           {/* Phone */}
           <a
             href={info.phone.href}
-            className={styles.infoCard}
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 100%)",
-              borderColor: "rgba(6,182,212,0.2)",
-            }}
+            className={`${styles.infoCard} ${styles.accentCard}`}
           >
             <div className={styles.infoIconBox}>
               <Phone size={18} />
@@ -294,12 +280,7 @@ export default function Contact() {
 
           {/* Location */}
           <div
-            className={styles.infoCard}
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 100%)",
-              borderColor: "rgba(6,182,212,0.2)",
-            }}
+            className={`${styles.infoCard} ${styles.accentCard}`}
           >
             <div className={styles.infoIconBox}>
               <MapPin size={18} />
@@ -320,12 +301,7 @@ export default function Contact() {
 
           {/* Availability */}
           <div
-            className={styles.availabilityCard}
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 100%)",
-              borderColor: "rgba(6,182,212,0.2)",
-            }}
+            className={`${styles.availabilityCard} ${styles.accentCard}`}
           >
             <div className={styles.availabilityHeader}>
               <Clock size={16} className={styles.tabIcon} />
@@ -336,17 +312,12 @@ export default function Contact() {
 
           {/* Social */}
           <div
-            className={styles.socialCard}
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 100%)",
-              borderColor: "rgba(6,182,212,0.2)",
-            }}
+            className={`${styles.socialCard} ${styles.accentCard}`}
           >
             <p className={styles.socialHeading}>{social.heading}</p>
             <div className={styles.socialIcons}>
               <a
-                href={social.linkedin}
+                href={PERSONAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
@@ -355,7 +326,7 @@ export default function Contact() {
                 <FaLinkedinIn size={16} />
               </a>
               <a
-                href={social.github}
+                href={PERSONAL.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
@@ -367,8 +338,8 @@ export default function Contact() {
                 type="button"
                 className={styles.socialIcon}
                 onClick={() => {
-                  navigator.clipboard.writeText(social.email);
-                  window.location.href = `mailto:${social.email}`;
+                  navigator.clipboard.writeText(PERSONAL.email);
+                  window.location.href = `mailto:${PERSONAL.email}`;
                 }}
                 title="Email"
               >

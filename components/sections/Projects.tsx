@@ -109,18 +109,19 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <hr className={styles.divider} />
-
-                  <button
-                    type="button"
-                    onClick={() => router.push(`/projects/${project.slug}`)}
-                    className={styles.cta}
-                  >
-                    {t("cta") as string}
-                    <span className={styles.ctaArrow} aria-hidden="true">
-                      →
-                    </span>
-                  </button>
+                  <div className={styles.ctaGroup}>
+                    <hr className={styles.divider} />
+                    <button
+                      type="button"
+                      onClick={() => router.push(`/projects/${project.slug}`)}
+                      className={styles.cta}
+                    >
+                      {t("cta") as string}
+                      <span className={styles.ctaArrow} aria-hidden="true">
+                        →
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </article>
             );

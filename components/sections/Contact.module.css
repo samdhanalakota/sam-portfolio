@@ -494,6 +494,15 @@
     0 0 20px rgba(6, 182, 212, 0.08);
 }
 
+.accentCard {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0.03) 100%);
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.headingAccent {
+  color: #60a5fa;
+}
+
 .socialHeading {
   font-family: var(--font-display);
   font-size: 0.9rem;

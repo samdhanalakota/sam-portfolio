@@ -1,21 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { useTranslation } from "@/hooks/useTranslation";
 import styles from "@/components/sections/About.module.css";
 
+interface Stat {
+  value: string;
+  label: string;
+}
+
 /**
  * About section — introduces Sam with a two-column typography layout.
- * Left: name and identity. Right: impact statement paragraphs.
+ * Left: name, title, stats. Right: paragraphs and tech pills.
+ * All content driven from about.json — no hardcoded text or data.
  */
 export default function About() {
   const { t } = useTranslation("about");
   const yearsOfExperience = new Date().getFullYear() - 2020;
-  const primaryText = (t("paragraph_primary") as string).replace("{{years}}", String(yearsOfExperience));
-  const highlightedPrimary = primaryText
-    .replace("security and gaming industries", '<span class="highlight">security and gaming industries</span>')
-    .replace("millions of users globally", '<span class="highlight">millions of users globally</span>');
+  const primaryText = (t("paragraph_primary") as string).replace(
+    "{{years}}",
+    String(yearsOfExperience)
+  );
+  const stats = t("stats") as unknown as Stat[];
+  const techPills = t("tech_pills") as unknown as string[];
 
   return (
     <section id="about" className={styles.section}>
@@ -28,38 +35,31 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <span className={styles.sectionLabel}>
-            {t("section_number")} — {t("section_label")}
+            {t("section_number") as string} — {t("section_label") as string}
           </span>
-          <h2 className={styles.name}>{t("name")}</h2>
-          <p className={styles.title}>{t("title")}</p>
-          <h3 className={styles.secondaryHeading}>{t("secondary_heading")}</h3>
+          <h2 className={styles.name}>{t("name") as string}</h2>
+          <p className={styles.title}>{t("title") as string}</p>
+          <h3 className={styles.secondaryHeading}>{t("secondary_heading") as string}</h3>
           <div className={styles.stats}>
-            <div className={styles.statCard}>
-              <span className={styles.statValue}>6+</span>
-              <span className={styles.statLabel}>Years Experience</span>
-            </div>
-            <div className={styles.statCard}>
-              <span className={styles.statValue}>6</span>
-              <span className={styles.statLabel}>Production Systems</span>
-            </div>
-            <div className={styles.statCard}>
-              <span className={styles.statValue}>10M+</span>
-              <span className={styles.statLabel}>Users Reached</span>
-            </div>
+            {stats.map((stat) => (
+              <div key={stat.label} className={styles.statCard}>
+                <span className={styles.statValue}>{stat.value}</span>
+                <span className={styles.statLabel}>{stat.label}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
 
         <div className={styles.rightColumn}>
-          <p
-            className={styles.primaryParagraph}
-            dangerouslySetInnerHTML={{ __html: highlightedPrimary }}
-          />
+          <p className={styles.primaryParagraph}>
+            {primaryText}
+          </p>
           <div className={styles.secondaryContent}>
             <p className={styles.secondaryParagraph}>
               {t("paragraph_secondary") as string}
             </p>
             <div className={styles.techPills}>
-              {["NestJS", "React 19", "TypeScript", "Node.js", "AWS", "Ruby on Rails", "PostgreSQL", "Docker", "Kubernetes"].map((tech) => (
+              {techPills.map((tech) => (
                 <span key={tech} className={styles.techPill}>{tech}</span>
               ))}
             </div>

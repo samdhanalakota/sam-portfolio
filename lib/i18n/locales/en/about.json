@@ -3,7 +3,23 @@
   "section_label": "ABOUT",
   "name": "Sam Dhanalakota",
   "title": "SENIOR FULL-STACK ENGINEER",
-  "secondary_heading": "What I've built",
-  "paragraph_primary": "{{years}}+ years building production software across security and gaming industries — React frontends, distributed Node.js backends, and cloud infrastructure reaching millions of users globally.",
-  "paragraph_secondary": "I architect full-stack systems end-to-end - from modular React SPAs to NestJS microservices and AWS infrastructure. I ship faster with AI, using Claude Code, Cursor, and AgentOS as core parts of my engineering workflow - not as experiments."
+  "secondary_heading": "What I build",
+  "paragraph_primary": "Senior Software Engineer passionate about designing and building scalable web applications, real-time platforms, and cloud-native solutions. I thrive on complex challenges and take pride in shipping software that people actually rely on.",
+  "paragraph_secondary": "I architect full-stack systems end-to-end - from modular React SPAs to NestJS microservices and AWS infrastructure. I ship faster with AI, using Claude Code, Cursor, and AgentOS as core parts of my engineering workflow - not as experiments.",
+  "stats": [
+    { "value": "6+", "label": "Years Experience" },
+    { "value": "6", "label": "Production Systems" },
+    { "value": "10M+", "label": "Users Reached" }
+  ],
+  "tech_pills": [
+    "React 19",
+    "TypeScript",
+    "Node.js",
+    "NestJS",
+    "AWS",
+    "Ruby on Rails",
+    "PostgreSQL",
+    "Docker",
+    "Kubernetes"
+  ]
 }

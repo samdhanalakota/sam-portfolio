@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, ExternalLink, Code, Briefcase, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Project, projects } from "@/lib/constants/projects";
+import { PERSONAL } from "@/lib/constants/personal";
+import { initCalEmbed } from "@/lib/utils/cal";
 import { useTranslation } from "@/hooks/useTranslation";
 import styles from "./ProjectDetail.module.css";
 
@@ -125,7 +127,7 @@ export default function ProjectDetail({ project }: Props) {
           </motion.div>
         </main>
 
-        {/* RIGHT sidebar — placeholder for Chunk 3 */}
+        {/* Sidebar */}
         <aside className={styles.sidebar}>
           {/* Key Metric card */}
           <div className={styles.sidebarCard}>
@@ -176,7 +178,7 @@ export default function ProjectDetail({ project }: Props) {
             <p className={styles.openText}>{t("sidebar.open_text") as string}</p>
             <div className={styles.openLinks}>
               <a
-                href="https://linkedin.com/in/sam-dhanalakota-946649147"
+                href={PERSONAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.openBtn}
@@ -184,7 +186,7 @@ export default function ProjectDetail({ project }: Props) {
                 <Briefcase size={13} />
                 {t("sidebar.linkedin") as string}
               </a>
-              <a href="mailto:samdsiva1994@gmail.com" className={styles.openBtn}>
+              <a href={`mailto:${PERSONAL.email}`} className={styles.openBtn}>
                 <Mail size={13} />
                 {t("sidebar.email") as string}
               </a>
@@ -260,71 +262,7 @@ function CtaSection() {
   useEffect(() => {
     if (!showCal || calLoaded.current) return;
     calLoaded.current = true;
-
-    // Cal.com official queue bootstrap: prepares window.Cal.q before embed.js runs.
-    // @ts-ignore
-    (function (C, A, L) {
-      const p = function (a: { q: unknown[] }, ar: unknown) {
-        a.q.push(ar);
-      };
-      const d = C.document;
-      // @ts-ignore
-      C.Cal =
-        // @ts-ignore
-        C.Cal ||
-        function (...args: unknown[]) {
-          // @ts-ignore
-          const cal = C.Cal;
-          if (!cal.loaded) {
-            cal.ns = {};
-            cal.q = cal.q || [];
-            const scriptEl = d.createElement("script");
-            scriptEl.src = A;
-            scriptEl.async = true;
-            d.head.appendChild(scriptEl);
-            cal.loaded = true;
-          }
-          if (args[0] === L) {
-            const api = function (...apiArgs: unknown[]) {
-              p(api as unknown as { q: unknown[] }, apiArgs);
-            };
-            const namespace = args[1];
-            // @ts-ignore
-            api.q = api.q || [];
-            if (typeof namespace === "string") {
-              cal.ns[namespace] = cal.ns[namespace] || api;
-              p(cal.ns[namespace], args);
-              p(cal, ["initNamespace", namespace]);
-            } else {
-              p(cal, args);
-            }
-            return;
-          }
-          p(cal, args);
-        };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    // @ts-ignore
-    window.Cal("init", "30min", { origin: "https://cal.com" });
-    // @ts-ignore
-    window.Cal.ns["30min"]("inline", {
-      elementOrSelector: "#cal-inline",
-      calLink: "sam-dhanalakota/connect",
-      layout: "month_view",
-      config: {
-        layout: "month_view",
-      },
-    });
-    // @ts-ignore
-    window.Cal.ns["30min"]("ui", {
-      theme: "dark",
-      hideEventTypeDetails: true,
-      layout: "month_view",
-      styles: {
-        branding: { brandColor: "#84cc16" },
-        body: { background: "transparent" },
-      },
-    });
+    initCalEmbed(PERSONAL.calLink, "#cal-inline");
   }, [showCal]);
 
   return (
@@ -374,11 +312,11 @@ function ProjectFooter() {
       <div className={styles.footerInner}>
         <p className={styles.footerCopy}>{t("footer.copy") as string}</p>
         <div className={styles.footerLinks}>
-          <a href="mailto:samdsiva1994@gmail.com" className={styles.footerLink}>
+          <a href={`mailto:${PERSONAL.email}`} className={styles.footerLink}>
             {t("footer.email") as string}
           </a>
           <a
-            href="https://linkedin.com/in/sam-dhanalakota-946649147"
+            href={PERSONAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}
@@ -386,7 +324,7 @@ function ProjectFooter() {
             {t("footer.linkedin") as string}
           </a>
           <a
-            href="https://github.com/samdhanalakota"
+            href={PERSONAL.github}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}
