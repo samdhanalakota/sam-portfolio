@@ -2,7 +2,7 @@
 
 Personal portfolio website built with Next.js 14+, TypeScript, and Tailwind CSS.
 
-🌐 **Live:** [sam-portfolio-ogrg.vercel.app](https://www.samdhanalakota.com/)
+🌐 **Live:** [sam.dhanalakota.app](https://www.samdhanalakota.com/)
 
 ---
 
