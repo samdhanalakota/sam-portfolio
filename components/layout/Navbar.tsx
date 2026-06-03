@@ -88,11 +88,11 @@ export default function Navbar() {
             type="button"
             onClick={() => onNavClick("intro")}
             className="flex items-center"
-            aria-label={t("nav_items.intro")}
+            aria-label={t("nav_items.intro") as string}
           >
             <Image
               src={isDark ? "/logo-dark.png" : "/logo-light.png"}
-              alt={t("logo_alt")}
+              alt={t("logo_alt") as string}
               width={70}
               height={70}
               className="h-auto w-auto"
@@ -114,7 +114,7 @@ export default function Navbar() {
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
-                  {t(`nav_items.${item.id}`)}
+                  {t(`nav_items.${item.id}`) as string}
                 </button>
               );
             })}
@@ -126,7 +126,7 @@ export default function Navbar() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               disabled={!mounted}
               className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--text-primary)]"
-              aria-label={t("toggle_theme")}
+              aria-label={t("toggle_theme") as string}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isDark || !mounted ? (
@@ -160,7 +160,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
             className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] md:hidden"
-            aria-label={t("open_menu")}
+            aria-label={t("open_menu") as string}
           >
             <Menu size={18} />
           </button>
@@ -181,7 +181,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)]"
-                aria-label={t("close_menu")}
+                aria-label={t("close_menu") as string}
               >
                 <X size={18} />
               </button>
@@ -195,7 +195,7 @@ export default function Navbar() {
                   onClick={() => onNavClick(item.id)}
                   className="text-[18px] font-semibold uppercase tracking-wide text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)] [font-family:var(--font-display)]"
                 >
-                  {t(`nav_items.${item.id}`)}
+                  {t(`nav_items.${item.id}`) as string}
                 </button>
               ))}
             </div>
