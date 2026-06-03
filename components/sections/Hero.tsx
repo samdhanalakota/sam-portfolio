@@ -36,7 +36,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="[font-family:var(--font-display)] mb-6 text-md font-medium uppercase tracking-widest text-[var(--text-muted)]"
           >
-            {t("label")}
+            {t("label") as string}
           </motion.p>
 
           <motion.h1
@@ -46,11 +46,11 @@ export default function Hero() {
             className="mb-6 font-serif font-bold leading-tight text-[var(--hero-heading)]"
             style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
-            {t("headline_1")}
+            {t("headline_1") as string}
             <br />
-            {t("headline_2")}
+            {t("headline_2") as string}
             <br />
-            {t("headline_3")}
+            {t("headline_3") as string}
           </motion.h1>
 
           <motion.p
@@ -59,7 +59,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-4 text-base leading-relaxed text-[var(--text-secondary)]"
           >
-            {t("subparagraph")}
+            {t("subparagraph") as string}
           </motion.p>
 
           <motion.div
@@ -73,14 +73,14 @@ export default function Hero() {
               onClick={() => scrollToSection("projects")}
               className="bg-[var(--lime)] border border-[var(--lime)] text-[var(--btn-primary-text)] hover:bg-[var(--lime-hover)] rounded-full !px-8 !py-4 text-sm font-bold uppercase tracking-widest"
             >
-              {t("cta_primary")}
+              {t("cta_primary") as string}
             </Button>
             <Button
               onClick={() => scrollToSection("contact")}
               variant="outline"
               className="rounded-full !px-8 !py-4 text-sm font-bold uppercase tracking-widest border-[1.5px] border-[var(--btn-outline-border)] text-[var(--btn-outline-text)] bg-transparent hover:bg-[var(--btn-outline-hover-bg)] hover:border-[var(--btn-outline-hover-border)] transition-all duration-200"
             >
-              {t("cta_secondary")}
+              {t("cta_secondary") as string}
             </Button>
           </motion.div>
         </div>
@@ -107,7 +107,7 @@ export default function Hero() {
 
       <div className="absolute bottom-8 left-1/2 z-[1] flex -translate-x-1/2 flex-col items-center gap-2">
         <span className="[font-family:var(--font-display)] text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
-          {t("scroll_label")}
+          {t("scroll_label") as string}
         </span>
         <motion.div
           className="h-12 w-px origin-top bg-[var(--text-muted)]"

@@ -29,6 +29,7 @@ export default function Navbar() {
   const isDark = mounted ? theme !== "light" : true;
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

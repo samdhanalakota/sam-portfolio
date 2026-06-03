@@ -219,10 +219,10 @@ export default function Skills() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <p className={styles.sectionLabel}>
-          {t("section_number")} — {t("section_label")}
+          {t("section_number") as string} — {t("section_label") as string}
         </p>
-        <h2 className={styles.heading}>{t("heading")}</h2>
-        <p className={styles.subheading}>{t("subheading")}</p>
+        <h2 className={styles.heading}>{t("heading") as string}</h2>
+        <p className={styles.subheading}>{t("subheading") as string}</p>
       </motion.div>
 
       <div className={styles.filtersHeader}>
