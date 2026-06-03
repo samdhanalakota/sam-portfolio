@@ -28,11 +28,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Sam Dhanalakota — Senior Full-Stack Engineer",
-  description:
-    "Senior Full-Stack Engineer building enterprise platforms at scale. React, TypeScript, Node.js, AWS. Based in Vancouver, BC.",
+  title: "Sam Dhanalakota",
+  description: "Senior Software Engineer — React, TypeScript, Node.js",
   icons: {
-    icon: "/logo-dark.png",
+    icon: "/favicon.svg",
     apple: "/logo-dark.png",
   },
 };

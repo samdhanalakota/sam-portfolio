@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -18,6 +19,7 @@ import { scrollToSection } from "@/lib/utils/scroll";
  * section intersection tracking.
  */
 export default function Navbar() {
+  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation("navbar");
   const [mounted, setMounted] = useState(false);
@@ -68,6 +70,8 @@ export default function Navbar() {
     scrollToSection(id);
     setIsMobileMenuOpen(false);
   };
+
+  if (pathname.startsWith("/projects/")) return null;
 
   return (
     <>

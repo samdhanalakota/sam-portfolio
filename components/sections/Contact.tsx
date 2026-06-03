@@ -214,7 +214,7 @@ export default function Contact() {
             ) : (
               <div className={styles.calWrap}>
                 <iframe
-                  src="https://cal.com/sam-dhanalakota/30min?embed=true&theme=dark"
+                src="https://cal.com/sam-dhanalakota/connect?embed=true&theme=dark"
                   width="100%"
                   frameBorder="0"
                   title="Schedule a call"

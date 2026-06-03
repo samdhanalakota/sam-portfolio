@@ -1,0 +1,38 @@
+{
+  "back": "Back",
+  "sections": {
+    "overview": "Overview",
+    "challenge": "The Challenge",
+    "what_i_built": "What I Built",
+    "architecture": "Architecture",
+    "impact": "Impact",
+    "learned": "What I Learned"
+  },
+  "sidebar": {
+    "key_metric": "Key Metric",
+    "project_links": "Project Links",
+    "live_demo": "Live Demo",
+    "source_code": "Source Code",
+    "soon": "Soon",
+    "open_opportunities": "Open to Opportunities",
+    "open_text": "Available for full-time roles, contract work, and freelance projects.",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "other_projects": {
+    "heading": "Other Projects"
+  },
+  "cta": {
+    "label": "Let's Work Together",
+    "heading": "We Can Build Something Really Incredible",
+    "subtext": "FREE 30-Min Call — No agenda required. Just bring what you're working on.",
+    "schedule_call": "Schedule a Call",
+    "schedule_title": "Schedule a call"
+  },
+  "footer": {
+    "copy": "© 2026 Sam Dhanalakota. Designed & Built by Sam.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  }
+}

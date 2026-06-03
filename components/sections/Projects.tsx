@@ -2,15 +2,16 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import styles from "@/components/sections/Projects.module.css";
 import { useTranslation } from "@/hooks/useTranslation";
-import { scrollToSection } from "@/lib/utils/scroll";
 
 type TabType = "scope" | "tech";
 
 type Project = {
   id: string;
+  slug: string;
   number: string;
   title: string;
   description: string;
@@ -28,6 +29,7 @@ export default function Projects() {
   const { t } = useTranslation("projects");
   const projects = t<Project[]>("projects", { returnObjects: true });
   const [activeTabs, setActiveTabs] = useState<Record<string, TabType>>({});
+  const router = useRouter();
 
   const setCardTab = (projectId: string, tab: TabType) => {
     setActiveTabs((prev) => ({ ...prev, [projectId]: tab }));
@@ -43,10 +45,10 @@ export default function Projects() {
         viewport={{ once: true, margin: "-100px" }}
       >
         <span className={styles.sectionLabel}>
-          {t("section_number")} — {t("section_label")}
+          {t("section_number") as string} — {t("section_label") as string}
         </span>
-        <h2 className={styles.heading}>{t("heading")}</h2>
-        <p className={styles.subheading}>{t("subheading")}</p>
+        <h2 className={styles.heading}>{t("heading") as string}</h2>
+        <p className={styles.subheading}>{t("subheading") as string}</p>
       </motion.div>
 
       <div className={styles.scrollContainer}>
@@ -79,14 +81,14 @@ export default function Projects() {
                       onClick={() => setCardTab(project.id, "scope")}
                       className={`${styles.toggleButton} ${activeTab === "scope" ? styles.toggleButtonActive : ""}`}
                     >
-                      {t("scope_tab")}
+                      {t("scope_tab") as string}
                     </button>
                     <button
                       type="button"
                       onClick={() => setCardTab(project.id, "tech")}
                       className={`${styles.toggleButton} ${activeTab === "tech" ? styles.toggleButtonActive : ""}`}
                     >
-                      {t("tech_tab")}
+                      {t("tech_tab") as string}
                     </button>
                   </div>
 
@@ -111,10 +113,10 @@ export default function Projects() {
 
                   <button
                     type="button"
-                    onClick={() => scrollToSection("contact")}
+                    onClick={() => router.push(`/projects/${project.slug}`)}
                     className={styles.cta}
                   >
-                    {t("cta")}
+                    {t("cta") as string}
                     <span className={styles.ctaArrow} aria-hidden="true">
                       →
                     </span>

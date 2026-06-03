@@ -1,11 +1,13 @@
 {
-  "tagline": "Building enterprise platforms that scale.",
+  "tagline": "Passionate about building scalable products, solving complex challenges, and delivering software that creates real value for users.",
+  "open_to_work": "Open to work",
   "quick_links_heading": "Quick Links",
-  "contact_heading": "Contact",
+  "contact_heading": "Get in Touch",
   "email_label": "samdsiva1994@gmail.com",
   "linkedin_label": "LinkedIn",
   "github_label": "GitHub",
   "message_label": "Leave a Message",
-  "copyright": "© 2026 Sam Dhanalakota. All rights reserved.",
-  "back_to_top": "Back to top"
+  "copyright_prefix": "© 2026 Designed & Built by",
+  "copyright_name": "Sam Dhanalakota",
+  "back_to_top": "Back to Top"
 }
