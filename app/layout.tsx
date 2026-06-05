@@ -46,6 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={cn(spaceGrotesk.variable, inter.variable, playfair.variable, "font-sans", geist.variable)}
       suppressHydrationWarning
     >
