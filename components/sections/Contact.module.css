@@ -7,15 +7,15 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 6rem 0;
-  gap: 3rem;
+  padding: 4rem 1.5rem;
 }
 
 /* TOP */
 .top {
   display: flex;
   flex-direction: column;
-  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0;
 }
 
 .sectionLabel {
@@ -92,7 +92,8 @@
   gap: 2rem;
   align-items: start;
   width: 100%;
-  padding: 0 1.5rem;
+  margin-top: 4rem;
+  padding: 0;
 }
 
 /* LEFT — tabbed container */
@@ -543,26 +544,16 @@
 
 /* RESPONSIVE */
 @media (min-width: 1024px) {
-  .top {
-    padding: 0 6rem;
+  .section {
+    padding: 8rem 10rem;
   }
 
   .grid {
-    padding: 0 6rem;
     grid-template-columns: 1.6fr 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .section {
-    padding: 5rem 0;
-  }
-
-  .top,
-  .grid {
-    padding: 0 1.5rem;
-  }
-
   .formRow {
     grid-template-columns: 1fr;
   }

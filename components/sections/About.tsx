@@ -16,11 +16,7 @@ interface Stat {
  */
 export default function About() {
   const { t } = useTranslation("about");
-  const yearsOfExperience = new Date().getFullYear() - 2020;
-  const primaryText = (t("paragraph_primary") as string).replace(
-    "{{years}}",
-    String(yearsOfExperience)
-  );
+  const primaryText = t("paragraph_primary") as string;
   const stats = t("stats") as unknown as Stat[];
   const techPills = t("tech_pills") as unknown as string[];
 
@@ -51,9 +47,10 @@ export default function About() {
         </motion.div>
 
         <div className={styles.rightColumn}>
-          <p className={styles.primaryParagraph}>
-            {primaryText}
-          </p>
+          <p
+            className={styles.primaryParagraph}
+            dangerouslySetInnerHTML={{ __html: primaryText }}
+          />
           <div className={styles.secondaryContent}>
             <p className={styles.secondaryParagraph}>
               {t("paragraph_secondary") as string}

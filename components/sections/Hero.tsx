@@ -32,7 +32,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="[font-family:var(--font-display)] mb-6 text-md font-medium uppercase tracking-widest text-[var(--text-muted)]"
+            className="[font-family:var(--font-display)] mb-3 text-md font-medium uppercase tracking-widest text-[var(--text-muted)]"
           >
             {t("label") as string}
           </motion.p>

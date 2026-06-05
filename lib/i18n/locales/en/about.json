@@ -4,7 +4,7 @@
   "name": "Sam Dhanalakota",
   "title": "SENIOR FULL-STACK ENGINEER",
   "secondary_heading": "What I build",
-  "paragraph_primary": "Senior Software Engineer passionate about designing and building scalable web applications, real-time platforms, and cloud-native solutions. I thrive on complex challenges and take pride in shipping software that people actually rely on.",
+  "paragraph_primary": "Senior Software Engineer passionate about designing and building <span class=\"highlight\">scalable web applications</span>, <span class=\"highlight\">real-time platforms</span>, and <span class=\"highlight\">cloud-native solutions</span>. I thrive on complex challenges and take pride in shipping software that <span class=\"highlight\">people actually rely on</span>.",
   "paragraph_secondary": "I architect full-stack systems end-to-end - from modular React SPAs to NestJS microservices and AWS infrastructure. I ship faster with AI, using Claude Code, Cursor, and AgentOS as core parts of my engineering workflow - not as experiments.",
   "stats": [
     { "value": "6+", "label": "Years Experience" },

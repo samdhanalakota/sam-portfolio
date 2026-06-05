@@ -6,18 +6,18 @@
   border-top: 1px solid var(--custom-border);
   display: flex;
   flex-direction: column;
-  padding: 6rem 0;
+  padding: 4rem 1.5rem;
 }
 
 .header {
-  padding: 3rem 1.5rem 2rem 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  padding: 0;
 }
 
 .filtersHeader {
-  padding: 0 6rem;
-  padding-top: 2rem;
-  margin-bottom: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  padding: 0;
 }
 
 .sectionLabel {
@@ -28,6 +28,7 @@
   letter-spacing: 0.2em;
   color: var(--text-muted);
   margin-bottom: 0.75rem;
+  display: block;
 }
 
 .heading {
@@ -36,6 +37,7 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 
 .subheading {
@@ -225,30 +227,25 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 0 1.5rem 2rem 1.5rem;
+  padding: 0 0 2rem 0;
   width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
 @media (max-width: 1024px) {
-  .filtersHeader {
-    padding: 0 2rem;
-    padding-top: 0.75rem;
-  }
-
   .rowsWrapper {
     width: 100%;
   }
 }
 
 @media (min-width: 1024px) {
-  .header {
-    padding: 4rem 10rem 3rem 10rem;
+  .section {
+    padding: 8rem 10rem;
   }
 
   .filteredGrid {
-    padding: 0 10rem 2rem 10rem;
+    padding: 0 0 2rem 0;
   }
 }
 
