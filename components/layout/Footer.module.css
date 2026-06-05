@@ -18,6 +18,14 @@
   gap: 1rem;
 }
 
+.logoBtn {
+  display: inline-flex;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 .tagline {
   font-family: var(--font-body);
   font-size: 0.875rem;

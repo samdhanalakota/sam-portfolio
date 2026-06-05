@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { NAV_ITEMS, SOCIAL_LINKS } from "@/lib/constants/navigation";
-import { scrollToSection } from "@/lib/utils/scroll";
+import { scrollToSection, scrollToTop } from "@/lib/utils/scroll";
 import styles from "./Footer.module.css";
 
 const LinkedInIcon = () => (
@@ -50,12 +50,19 @@ export default function Footer() {
       <div className={styles.grid}>
         {/* BRAND */}
         <div className={styles.brand}>
-          <Image
-            src={isDark ? "/logo-dark.png" : "/logo-light.png"}
-            alt="Sam Dhanalakota"
-            width={60}
-            height={60}
-          />
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className={styles.logoBtn}
+            aria-label={t("back_to_top") as string}
+          >
+            <Image
+              src={isDark ? "/logo-dark.png" : "/logo-light.png"}
+              alt="Sam Dhanalakota"
+              width={60}
+              height={60}
+            />
+          </button>
           <p className={styles.tagline}>{tagline}</p>
           <span className={styles.openToWork}>
             <span className={styles.openToWorkDot} />
@@ -139,7 +146,7 @@ export default function Footer() {
         </p>
         <button
           type="button"
-          onClick={() => scrollToSection("intro")}
+          onClick={scrollToTop}
           className={styles.backToTop}
         >
           {backToTop} <ArrowUp size={14} />

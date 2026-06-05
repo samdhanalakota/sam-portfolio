@@ -10,6 +10,11 @@
   align-items: center;
   justify-content: center;
   gap: 1.75rem;
+  pointer-events: none;
+}
+
+.navLink {
+  pointer-events: auto;
 }
 
 .mobileNavList {

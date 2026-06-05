@@ -1,4 +1,15 @@
 /**
+ * Smoothly scrolls the page to the very top.
+ * @returns void
+ *
+ * @example
+ * scrollToTop();
+ */
+export function scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
  * Smoothly scrolls the page to a section by its DOM id.
  * @param id - The id attribute of the target section element
  * @returns void

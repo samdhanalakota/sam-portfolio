@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { NAV_ITEMS } from "@/lib/constants/navigation";
-import { scrollToSection } from "@/lib/utils/scroll";
+import { scrollToSection, scrollToTop } from "@/lib/utils/scroll";
 import styles from "./Navbar.module.css";
 
 /**
@@ -87,8 +87,11 @@ export default function Navbar() {
         <nav className="relative flex h-20 w-full items-center justify-between px-4 sm:px-6 md:pl-10 md:pr-10">
           <button
             type="button"
-            onClick={() => onNavClick("intro")}
-            className="flex items-center"
+            onClick={() => {
+              scrollToTop();
+              setIsMobileMenuOpen(false);
+            }}
+            className="relative z-10 flex items-center"
             aria-label={t("nav_items.intro") as string}
           >
             <Image
@@ -109,7 +112,7 @@ export default function Navbar() {
                   key={item.id}
                   type="button"
                   onClick={() => onNavClick(item.id)}
-                  className={`[font-family:var(--font-display)] text-[13px] font-bold uppercase tracking-widest transition-colors duration-200 ${
+                  className={`${styles.navLink} [font-family:var(--font-display)] text-[13px] font-bold uppercase tracking-widest transition-colors duration-200 ${
                     isActive
                       ? "text-[var(--nav-active)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
