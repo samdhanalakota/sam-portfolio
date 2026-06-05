@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "@/hooks/useTranslation";
 import { scrollToSection } from "@/lib/utils/scroll";
 import { Button } from "@/components/ui/button";
+import styles from "@/components/sections/Hero.module.css";
 
 /**
  * Hero section — first visible section of the portfolio.
@@ -21,15 +22,12 @@ export default function Hero() {
   return (
     <section
       id="intro"
-      className="relative min-h-screen w-full overflow-hidden bg-[var(--bg-primary)] flex items-center justify-center pt-20"
+      className={`${styles.section} relative w-full overflow-hidden bg-[var(--bg-primary)]`}
     >
       <div className="hero-noise absolute inset-0 z-0" />
 
-      <div
-        className="relative z-10 flex w-full items-center justify-between gap-16 py-0"
-        style={{ paddingLeft: "8rem", paddingRight: "4rem" }}
-      >
-        <div className="flex flex-col justify-center w-[55%]">
+      <div className={`${styles.grid} relative z-10 items-center`}>
+        <div className="flex flex-col justify-center">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,8 +41,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-6 font-serif font-bold leading-tight text-[var(--hero-heading)]"
-            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+            className={`${styles.headline} mb-6`}
           >
             {t("headline_1") as string}
             <br />
@@ -58,6 +55,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-4 text-base leading-relaxed text-[var(--text-secondary)]"
+            style={{ marginTop: "1rem" }}
           >
             {t("subparagraph") as string}
           </motion.p>
@@ -66,8 +64,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-row items-center gap-4"
-            style={{ marginTop: "2rem" }}
+            className={styles.actions}
           >
             <Button
               onClick={() => scrollToSection("projects")}
@@ -89,12 +86,11 @@ export default function Hero() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="hidden lg:flex self-center h-[520px] w-[420px] flex-shrink-0 overflow-hidden rounded-2xl border border-[var(--custom-border)]"
-          style={{ marginRight: "4rem" }}
+          className={`${styles.photoContainer} self-center h-[520px] w-[420px] flex-shrink-0 overflow-hidden rounded-2xl border border-[var(--custom-border)]`}
         >
           <div className="relative h-full w-full">
             <Image
-              src="/hero-photo.jpeg"
+              src="/sam-hero-photo.jpeg"
               alt="Sam Dhanalakota portrait"
               fill
               sizes="(min-width: 1024px) 420px, 100vw"

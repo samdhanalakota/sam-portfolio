@@ -15,7 +15,7 @@
 .top {
   display: flex;
   flex-direction: column;
-  padding: 0 6rem;
+  padding: 0 1.5rem;
 }
 
 .sectionLabel {
@@ -88,11 +88,11 @@
 /* MAIN GRID */
 .grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: start;
   width: 100%;
-  padding: 0 6rem;
+  padding: 0 1.5rem;
 }
 
 /* LEFT — tabbed container */
@@ -542,18 +542,14 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 1024px) {
-  .section {
-    padding: 6rem 0;
-  }
-
-  .top,
-  .grid {
-    padding: 0 2rem;
+@media (min-width: 1024px) {
+  .top {
+    padding: 0 6rem;
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    padding: 0 6rem;
+    grid-template-columns: 1.6fr 1fr;
   }
 }
 
@@ -572,81 +568,111 @@
   }
 }
 
-/* Light mode card overrides */
 :global(.light) .leftPanel {
-  background: linear-gradient(135deg, #ecfeff 0%, #f0feff 100%);
-  border-color: rgba(6, 182, 212, 0.25);
-  box-shadow: 0 4px 24px rgba(6, 182, 212, 0.08);
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 :global(.light) .leftPanel:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 8px 40px rgba(6, 182, 212, 0.12);
+  border-color: rgba(101, 163, 13, 0.4);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
 }
 
 :global(.light) .infoCard {
-  background: linear-gradient(135deg, #ecfeff 0%, #f0feff 100%) !important;
-  border-color: rgba(6, 182, 212, 0.2) !important;
-  box-shadow: 0 2px 12px rgba(6, 182, 212, 0.06);
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 :global(.light) .infoCard:hover {
-  border-color: rgba(6, 182, 212, 0.4) !important;
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.12);
+  border-color: rgba(101, 163, 13, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
 }
 
 :global(.light) .availabilityCard {
-  background: linear-gradient(135deg, #ecfeff 0%, #f0feff 100%) !important;
-  border-color: rgba(6, 182, 212, 0.2) !important;
-  box-shadow: 0 2px 12px rgba(6, 182, 212, 0.06);
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 :global(.light) .availabilityCard:hover {
-  border-color: rgba(6, 182, 212, 0.4) !important;
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.12);
+  border-color: rgba(101, 163, 13, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
 }
 
 :global(.light) .socialCard {
-  background: linear-gradient(135deg, #ecfeff 0%, #f0feff 100%) !important;
-  border-color: rgba(6, 182, 212, 0.2) !important;
-  box-shadow: 0 2px 12px rgba(6, 182, 212, 0.06);
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+:global(.light) .socialCard:hover {
+  border-color: rgba(101, 163, 13, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
 }
 
 :global(.light) .infoIconBox {
-  background: rgba(6, 182, 212, 0.08);
-  border-color: rgba(6, 182, 212, 0.15);
-  color: #06b6d4;
+  background: #ecfccb;
+  border-color: #bef264;
+  color: #65a30d;
+}
+
+:global(.light) .infoCard:hover .infoIconBox {
+  background: #d9f99d;
+  border-color: #65a30d;
 }
 
 :global(.light) .socialIcon {
-  background: rgba(6, 182, 212, 0.08);
-  border-color: rgba(6, 182, 212, 0.2);
-  color: #06b6d4;
+  background: #ecfccb;
+  border-color: #bef264;
+  color: #65a30d;
 }
 
 :global(.light) .socialIcon:hover {
-  background: linear-gradient(135deg, rgba(6,182,212,0.2) 0%, rgba(6,182,212,0.1) 100%);
-  border-color: rgba(6, 182, 212, 0.5);
-  color: #0891b2;
-  box-shadow:
-    0 0 12px rgba(6, 182, 212, 0.3),
-    0 4px 20px rgba(6, 182, 212, 0.15);
+  background: #d9f99d;
+  border-color: #65a30d;
+  color: #4d7c0f;
+  box-shadow: 0 4px 16px rgba(101, 163, 13, 0.2);
+  transform: translateY(-2px);
 }
 
 :global(.light) .tabBar {
-  background: rgba(6, 182, 212, 0.04);
-  border-bottom-color: rgba(6, 182, 212, 0.15);
+  background: #f5f5f4;
+  border-bottom-color: #e2e8f0;
+}
+
+:global(.light) .tabBtnActive {
+  color: #65a30d;
+  border-bottom: 2px solid #65a30d;
+}
+
+:global(.light) .tabBtn:hover {
+  background: rgba(101, 163, 13, 0.04);
+  color: #0f172a;
 }
 
 :global(.light) .fieldInput,
 :global(.light) .fieldTextarea {
-  background: #ffffff;
-  border-color: rgba(6, 182, 212, 0.2);
+  background: #fafaf9;
+  border-color: #e2e8f0;
+  color: #0f172a;
 }
 
 :global(.light) .fieldInput:focus,
 :global(.light) .fieldTextarea:focus {
-  border-color: rgba(6, 182, 212, 0.5);
+  border-color: #65a30d;
+  box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.08);
+}
+
+:global(.light) .submitBtn {
+  background: #65a30d;
+  color: #ffffff;
+}
+
+:global(.light) .submitBtn:hover {
+  background: #4d7c0f;
+  box-shadow: 0 12px 30px rgba(101, 163, 13, 0.25);
 }
 
 :global(.dark) .availabilityPill {

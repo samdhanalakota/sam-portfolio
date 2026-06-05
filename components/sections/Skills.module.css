@@ -10,7 +10,7 @@
 }
 
 .header {
-  padding: 0 6rem;
+  padding: 3rem 1.5rem 2rem 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -113,6 +113,7 @@
 
 .filterRow {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   margin-bottom: 0;
@@ -121,6 +122,8 @@
 .filterBtn {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 0.35rem;
   font-family: var(--font-display);
   font-size: 0.75rem;
@@ -222,27 +225,52 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 0 6rem 2rem 6rem;
+  padding: 0 1.5rem 2rem 1.5rem;
   width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
 @media (max-width: 1024px) {
-  .header {
-    padding: 0 2rem;
-  }
-
   .filtersHeader {
     padding: 0 2rem;
     padding-top: 0.75rem;
   }
 
-  .filteredGrid {
-    padding: 0 2rem 2rem 2rem;
-  }
-
   .rowsWrapper {
     width: 100%;
   }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 4rem 10rem 3rem 10rem;
+  }
+
+  .filteredGrid {
+    padding: 0 10rem 2rem 10rem;
+  }
+}
+
+:global(.light) .skill {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+:global(.light) .skill:hover {
+  border-color: #65a30d;
+  background: #fafaf9;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+:global(.light) .filterBtnActive {
+  background: #65a30d;
+  border-color: #65a30d;
+  color: #ffffff;
+}
+
+:global(.light) .filterBtn:hover {
+  border-color: #65a30d;
+  color: #65a30d;
 }

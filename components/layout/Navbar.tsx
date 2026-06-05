@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { NAV_ITEMS } from "@/lib/constants/navigation";
 import { scrollToSection } from "@/lib/utils/scroll";
+import styles from "./Navbar.module.css";
 
 /**
  * Main site navigation with active-section tracking and mobile menu.
@@ -77,14 +78,13 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 ${
+        className={`${styles.nav} fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 ${
           isScrolled
             ? "border-[var(--custom-border)] bg-[var(--bg-primary)]/80 backdrop-blur-md"
             : "border-transparent bg-transparent"
         }`}
-        style={{ paddingRight: "2rem" }}
       >
-        <nav className="relative flex h-20 w-full items-center justify-between px-6 md:pl-10 md:pr-10">
+        <nav className="relative flex h-20 w-full items-center justify-between px-4 sm:px-6 md:pl-10 md:pr-10">
           <button
             type="button"
             onClick={() => onNavClick("intro")}
@@ -101,7 +101,7 @@ export default function Navbar() {
             />
           </button>
 
-          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
+          <div className={styles.navLinks}>
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -128,6 +128,7 @@ export default function Navbar() {
               disabled={!mounted}
               className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] transition-colors duration-200 hover:border-[var(--text-primary)]"
               aria-label={t("toggle_theme") as string}
+              style={{ marginRight: "1rem"}}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isDark || !mounted ? (
@@ -160,7 +161,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)] md:hidden"
             aria-label={t("open_menu") as string}
           >
             <Menu size={18} />
@@ -175,26 +176,26 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg-primary)] md:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg-primary)] px-4 pb-6 pt-2 md:hidden"
           >
-            <div className="flex h-20 items-center justify-end px-6">
+            <div className="flex h-20 items-center justify-end">
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--custom-border)] text-[var(--text-primary)]"
                 aria-label={t("close_menu") as string}
               >
                 <X size={18} />
               </button>
             </div>
 
-            <div className="flex flex-1 flex-col items-center justify-center gap-7 px-6">
+            <div className={styles.mobileNavList}>
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => onNavClick(item.id)}
-                  className="text-[18px] font-semibold uppercase tracking-wide text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-primary)] [font-family:var(--font-display)]"
+                  className={styles.mobileNavBtn}
                 >
                   {t(`nav_items.${item.id}`) as string}
                 </button>

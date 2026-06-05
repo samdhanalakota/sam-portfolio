@@ -48,22 +48,22 @@
 }
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-card: #efefef;
-  --text-primary: #0a0a0a;
-  --text-secondary: #444444;
-  --text-muted: #888888;
-  --custom-border: #e0e0e0;
+  --bg-primary: #fafaf1;
+  --bg-secondary: #f5f5f4;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --custom-border: #e2e8f0;
   --lime: #65a30d;
   --lime-hover: #4d7c0f;
-  --btn-primary-text: #ffffff;
-  --btn-outline-border: #65a30d;
-  --btn-outline-text: #4d7c0f;
-  --btn-outline-hover-bg: rgba(101, 163, 13, 0.08);
-  --btn-outline-hover-border: #65a30d;
-  --nav-active: #4d7c0f;
   --metric: #0369a1;
+  --nav-active: #65a30d;
+  --btn-primary-text: #ffffff;
+  --btn-outline-border: #cbd5e1;
+  --btn-outline-text: #334155;
+  --btn-outline-hover-bg: #f8fafc;
+  --btn-outline-hover-border: #65a30d;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

@@ -218,5 +218,21 @@
 }
 
 :global(.light) .footer {
-  background: #f0f0f0;
+  background: #f8fafc;
+  border-top-color: #e2e8f0;
+}
+
+:global(.light) .contactIconBox {
+  background: #ecfccb;
+  border-color: #bef264;
+  color: #65a30d;
+}
+
+:global(.light) .contactLink:hover .contactIconBox {
+  background: #d9f99d;
+  border-color: #65a30d;
+}
+
+:global(.light) .columnAccent {
+  background: #65a30d;
 }
